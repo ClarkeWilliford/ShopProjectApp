@@ -51,6 +51,7 @@
 		4CB7E7CC27FB38F100D8DAF2 /* ShopProjectAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProjectAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4CB7E7DA27FB443A00D8DAF2 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		4CB7E7DD27FB465500D8DAF2 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +136,7 @@
 			children = (
 				4CB7E7DA27FB443A00D8DAF2 /* ShopGroupAppDB.db */,
 				4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */,
+				4CB7E7DD27FB465500D8DAF2 /* Items.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
