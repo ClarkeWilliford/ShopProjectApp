@@ -49,6 +49,8 @@
 		4CB7E7C627FB38F100D8DAF2 /* ShopProjectAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopProjectAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB7E7CA27FB38F100D8DAF2 /* ShopProjectAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProjectAppUITests.swift; sourceTree = "<group>"; };
 		4CB7E7CC27FB38F100D8DAF2 /* ShopProjectAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProjectAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4CB7E7DA27FB443A00D8DAF2 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
+		4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		4CB7E79D27FB38F000D8DAF2 = {
 			isa = PBXGroup;
 			children = (
+				4CB7E7D927FB442F00D8DAF2 /* Model */,
 				4CB7E7A827FB38F000D8DAF2 /* ShopProjectApp */,
 				4CB7E7BF27FB38F100D8DAF2 /* ShopProjectAppTests */,
 				4CB7E7C927FB38F100D8DAF2 /* ShopProjectAppUITests */,
@@ -125,6 +128,15 @@
 				4CB7E7CC27FB38F100D8DAF2 /* ShopProjectAppUITestsLaunchTests.swift */,
 			);
 			path = ShopProjectAppUITests;
+			sourceTree = "<group>";
+		};
+		4CB7E7D927FB442F00D8DAF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CB7E7DA27FB443A00D8DAF2 /* ShopGroupAppDB.db */,
+				4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
