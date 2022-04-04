@@ -8,18 +8,18 @@
 import Foundation
 import SQLite3
 
-class DBHelper {
+class DBHelper{
 
-    var dataBase: OpaquePointer?
+    static var dataBase: OpaquePointer?
     
     //array of structs to hold item information
-    var itemsList: [Items]()
+    var itemsList = [Items]()
     //array of class instance to hold information on a single item.
-    var chosenItemList: [Items]()
-    var chosenItem: Items()
+    var chosenItemList = [Items]()
+    var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
     //arrauys to hold the suggested items.
-    var suggestedList: [Suggested]()
-    var suggestedItems: [Items]()
+    var suggestedList = [Suggested]()
+    var suggestedItems = [Items]()
 
     //MARK: Data base preparation
     func prepareDatabaseFile() -> String {
@@ -55,7 +55,7 @@ class DBHelper {
         //prints the database to the console so we can find it, if needed.
         print("Data base phat is :", f1)
         //Open the Data base or create it
-        if sqlite3_open(f1, &dataBase) != SQLITE_OK{
+        if sqlite3_open(f1, &DBHelper.dataBase) != SQLITE_OK{
             print("Can not open data base")
         
             }
@@ -84,7 +84,7 @@ class DBHelper {
             let description = String(cString: sqlite3_column_text(stmt, 4))
             let productID = sqlite3_column_int(stmt, 5)
             //Appends the information to the array.
-            itemsList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
+            itemsList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
         }
         
     }
@@ -92,7 +92,7 @@ class DBHelper {
     //MARK: Function to pull product with specific ID.
     func FetchItemByID(idToFetch: Int){
         //Holds the id to use.
-        let idToUse = idToFetch as Int32
+        let idToUse = idToFetch
         //Holds the query.
         let query = "select * from items where ID = '\(idToUse)'"
         //Holds the pointer.
@@ -115,10 +115,10 @@ class DBHelper {
             let productID = sqlite3_column_int(stmt, 5)
             //Appends the information to the array.
             chosenItemList.removeAll()
-            chosenItemList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
+            chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
             
             for list in chosenItemList{
-                chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID))
+                chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
             }
         }
     }
@@ -141,21 +141,16 @@ class DBHelper {
             while(sqlite3_step(stmt) == SQLITE_ROW){
                 //variables to hold the information retrieved.
                 let id = sqlite3_column_int(stmt, 0)
-                let itemID = String(cString: sqlite3_column_text(stmt,1))
+                let itemID = sqlite3_column_int(stmt,1)
                 //Appends the information to the array.
-                suggestedList.append(Suggested(id: id, itemID: itemID))
+                suggestedList.append(Suggested(id: Int(id), itemID: Int(itemID)))
             }
                 //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
                 for list in suggestedList{
                     FetchItemByID(idToFetch: list.itemID)
-                    suggestedItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID)
-                    chosenItem = ""
+                    suggestedItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID))
                                           
                 //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }
             }
         }
-    }
-
-    
-}
