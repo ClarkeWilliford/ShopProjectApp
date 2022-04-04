@@ -10,7 +10,12 @@ import SQLite3
 
 class DBHelper {
 
-    var dataBase : OpaquePointer?
+    var dataBase: OpaquePointer?
+    
+    //array of structs to hold item information
+    var itemsList: [Items]()
+    //class instance to hold information on a single item.
+    var chosenItem: Items()
 
     //MARK: Data base preparation
     func prepareDatabaseFile() -> String {
@@ -53,7 +58,65 @@ class DBHelper {
         }
     
     
+    //MARK: Function to Pull all products.
+    func FetchItems() {
+        //Holds the query.
+        let query = "select * from products"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            print(err)
+            return
+        }
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let image = String(cString: sqlite3_column_text(stmt, 2))
+            let price = String(cString: sqlite3_column_text(stmt, 3))
+            let description = String(cString: sqlite3_column_text(stmt, 4))
+            let productID = sqlite3_column_int(stmt, 5)
+            //Appends the information to the array.
+            itemsList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
+        }
+        
+    }
     
-    
+    //MARK: Function to pull product with specific ID.
+    func FetchItemByID(idToFetch: Int){
+        //Holds the id to use.
+        let idToUse = idToFetch
+        //Holds the query.
+        let query = "select * from products where ID = '\(idToUse)'"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            print(err)
+            return
+        }
+        
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let image = String(cString: sqlite3_column_text(stmt, 2))
+            let price = String(cString: sqlite3_column_text(stmt, 3))
+            let description = String(cString: sqlite3_column_text(stmt, 4))
+            let productID = sqlite3_column_int(stmt, 5)
+            //Appends the information to the array.
+            itemsList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
+            
+            for list in itemsList{
+                chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID))
+            }
+        }
+    }
+
     
 }
