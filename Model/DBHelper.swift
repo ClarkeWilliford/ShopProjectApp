@@ -15,6 +15,7 @@ class DBHelper {
     //array of structs to hold item information
     var itemsList: [Items]()
     //class instance to hold information on a single item.
+    var chosenItemList: [Items]()
     var chosenItem: Items()
 
     //MARK: Data base preparation
@@ -61,7 +62,7 @@ class DBHelper {
     //MARK: Function to Pull all products.
     func FetchItems() {
         //Holds the query.
-        let query = "select * from products"
+        let query = "select * from items"
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
@@ -90,7 +91,7 @@ class DBHelper {
         //Holds the id to use.
         let idToUse = idToFetch
         //Holds the query.
-        let query = "select * from products where ID = '\(idToUse)'"
+        let query = "select * from items where ID = '\(idToUse)'"
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
@@ -110,9 +111,10 @@ class DBHelper {
             let description = String(cString: sqlite3_column_text(stmt, 4))
             let productID = sqlite3_column_int(stmt, 5)
             //Appends the information to the array.
-            itemsList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
+            chosenItemList = ""
+            chosenItemList.append(Items(id: id, name: name, image: image, price: price, description: description, productID: productID))
             
-            for list in itemsList{
+            for list in chosenItemList{
                 chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID))
             }
         }
