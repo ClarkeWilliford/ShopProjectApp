@@ -17,9 +17,13 @@ class DBHelper{
     //array of class instance to hold information on a single item.
     var chosenItemList = [Items]()
     var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
-    //arrauys to hold the suggested items.
+    //arrays to hold the suggested items.
     var suggestedList = [Suggested]()
     var suggestedItems = [Items]()
+    
+    //arrays to hold the users order items
+    var userOrderList = [UserOrder]()
+    var orderItems = [Items]()
 
     //MARK: Data base preparation
     func prepareDatabaseFile() -> String {
@@ -69,7 +73,7 @@ class DBHelper{
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
-        if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+        if sqlite3_prepare(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
             print(err)
             return
@@ -153,4 +157,109 @@ class DBHelper{
                 //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }
             }
+    
+    func insertUserOrders(userID: Int, itemID: Int){
+        
+
+            //Variables to hold the information for the User
+            let userID = Int32(userID)
+            let itemID = Int32(itemID)
+            
+
+            var stmt: OpaquePointer?
+           // stores the query for the database.
+            let query = "INSERT INTO Users_Orders (UserID,ItemID) VALUES (?,?)"
+           
+            //Sends the query to the database.
+            if sqlite3_prepare_v2(DBHelper.dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //binds the userID
+            if sqlite3_bind_int(stmt, 1, userID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //binds the itemID
+            if sqlite3_bind_int(stmt, 2, itemID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+
+            //Checks if the bindings succeeded.
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //Prints to the console.
+            print("data save")
         }
+    
+    func insertUserWishlist(userID: Int, itemID: Int){
+        
+
+            //Variables to hold the information for the User
+            let userID = Int32(userID)
+            let itemID = Int32(itemID)
+            
+
+            var stmt: OpaquePointer?
+           // stores the query for the database
+            let query = "INSERT INTO Users_Wishlist (UserID,ItemID) VALUES (?,?)"
+           
+            //Sends the query to the database.
+            if sqlite3_prepare_v2(DBHelper.dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //binds the userID
+            if sqlite3_bind_int(stmt, 1, userID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //binds the itemID
+            if sqlite3_bind_int(stmt, 2, itemID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+
+            //Checks if the bindings succeeded.
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+            }
+            //Prints to the console.
+            print("data save")
+        }
+    
+    func fetchUserOrderItems(){
+        
+            //Holds the query.
+            let query = "select * from suggested_items"
+            //Holds the pointer.
+            var stmt : OpaquePointer?
+            //Queries the database and prints any error.
+            if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                print(err)
+                return
+            }
+            
+            //While loop to add information to the array.
+            while(sqlite3_step(stmt) == SQLITE_ROW){
+                //variables to hold the information retrieved.
+                let userID = sqlite3_column_int(stmt, 0)
+                let itemID = sqlite3_column_int(stmt,1)
+                //Appends the information to the array.
+                userOrderList.append(UserOrder(userID: Int(userID), itemID: Int(itemID)))
+            }
+                //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
+                for list in userOrderList{
+                    FetchItemByID(idToFetch: list.itemID)
+                    orderItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID))
+                                          
+                //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
+                }
+            }
+    
+}

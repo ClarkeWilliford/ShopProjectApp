@@ -8,7 +8,12 @@
 import UIKit
 
 var db = DBHelper()
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+    
     private let caller = DataFetcher()
     private var data = [Int]()
     var models = [Model]()
@@ -60,6 +65,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        db.OpenDatabase()
+        
+        db.FetchItems()
+        
+        for list in db.itemsList{
+            print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
+        }
+       
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ExampleTableViewCell", bundle: nil)
