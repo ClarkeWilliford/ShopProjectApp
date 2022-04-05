@@ -26,6 +26,13 @@
                             <action selector="proceedToCheckout:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qba-bT-yCo"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTc-xt-b24">
+                        <rect key="frame" x="106" y="72" width="209" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KWu-Ew-r9x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RtN-Y5-L1j"/>
@@ -35,6 +42,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkOutButton" destination="KWu-Ew-r9x" id="hWb-YG-Apg"/>
+                <outlet property="totalPrice" destination="RTc-xt-b24" id="Kp8-iZ-HFf"/>
             </connections>
             <point key="canvasLocation" x="101.44927536231884" y="166.07142857142856"/>
         </tableViewCell>

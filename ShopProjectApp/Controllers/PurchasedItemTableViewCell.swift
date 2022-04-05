@@ -13,7 +13,6 @@ class PurchasedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemQuantity: UILabel!
-    
     @IBOutlet weak var stepper: UIStepper!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +26,7 @@ class PurchasedItemTableViewCell: UITableViewCell {
     }
 
     @IBAction func stepperFunction(_ sender: Any) {
+        itemQuantity.text = String((sender as AnyObject).value)
     }
     
 }
