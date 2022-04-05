@@ -10,7 +10,7 @@ import SQLite3
 
 class DBHelper{
 
-    var db: OpaquePointer?
+    var dataBase: OpaquePointer?
     
 //    init(){
 //        self.connect()
@@ -106,7 +106,7 @@ class DBHelper{
         //prints the database to the console so we can find it, if needed.
         print("Data base phat is :", f1)
         //Open the Data base or create it
-        if sqlite3_open(f1, &db) != SQLITE_OK{
+        if sqlite3_open(f1, &dataBase) != SQLITE_OK{
             print("Can not open data base")
         
             }
@@ -123,8 +123,8 @@ class DBHelper{
 
 //        if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
    //         let err = String(cString: sqlite3_errmsg(db)!)
-        if sqlite3_prepare(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
-            let err = String(cString: sqlite3_errmsg(DBHelper.db)!)
+        if sqlite3_prepare(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
             print(err)
             return
         }
@@ -152,8 +152,8 @@ class DBHelper{
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
-        if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
-            let err = String(cString: sqlite3_errmsg(db)!)
+        if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
             print(err)
             return
         }
@@ -210,8 +210,8 @@ class DBHelper{
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
-            if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(db)!)
+            if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
                 return
             }
@@ -246,24 +246,24 @@ class DBHelper{
             let query = "INSERT INTO Users_Orders (UserID,ItemID) VALUES (?,?)"
            
             //Sends the query to the database.
-            if sqlite3_prepare_v2(DBHelper.dataBase, query, -1, &stmt, nil) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //binds the userID
             if sqlite3_bind_int(stmt, 1, userID) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //binds the itemID
             if sqlite3_bind_int(stmt, 2, itemID) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
 
             //Checks if the bindings succeeded.
             if sqlite3_step(stmt) != SQLITE_DONE {
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //Prints to the console.
@@ -283,24 +283,24 @@ class DBHelper{
             let query = "INSERT INTO Users_Wishlist (UserID,ItemID) VALUES (?,?)"
            
             //Sends the query to the database.
-            if sqlite3_prepare_v2(DBHelper.dataBase, query, -1, &stmt, nil) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //binds the userID
             if sqlite3_bind_int(stmt, 1, userID) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //binds the itemID
             if sqlite3_bind_int(stmt, 2, itemID) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
 
             //Checks if the bindings succeeded.
             if sqlite3_step(stmt) != SQLITE_DONE {
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
             }
             //Prints to the console.
@@ -314,8 +314,8 @@ class DBHelper{
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
-            if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
                 print(err)
                 return
             }
