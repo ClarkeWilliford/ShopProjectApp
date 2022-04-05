@@ -8,6 +8,7 @@
 import UIKit
 
 var db = DBHelper()
+/// Defines the home page view
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -22,13 +23,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var cellCount = 0
     var dodCollection = ["scribble", "dodPrice", "dodName"]
     
+    /// Defines number of rows in tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2 + itemDetailsCollection.count
     }
     
+    /// Defines height of table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 350
     }
+    
+    /// Defines each cell at a specific row in table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
@@ -72,9 +77,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for list in db.itemsList{
             print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
         }
-       
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ExampleTableViewCell", bundle: nil)
@@ -100,6 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         models.append(Model(text: "Kirby", imageName: "KirbyGame"))
     }
 
+    /// Update table view upon scrolling down
     override func viewDidLayoutSubviews() {
         tableView.frame = view.bounds
         print("viewlayoutsubviews")
@@ -119,6 +122,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
+    
+    /// Display spinner when paginating
     private func createSpinnerFooter()-> UIView{
         let footerView = UIView(frame: CGRect(x:0,y:0,width: view.frame.size.width, height: 100))
         let spinner = UIActivityIndicatorView()
@@ -128,6 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return footerView
     }
     
+    /// Determine if page reaches certain location to begin paginating
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height){
@@ -156,6 +162,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    /// Struct that defines the model for what data gets displayed in table view cells
     struct Model{
         let text: String
         let imageName: String

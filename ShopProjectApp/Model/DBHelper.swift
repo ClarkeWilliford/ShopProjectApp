@@ -10,7 +10,11 @@ import SQLite3
 
 class DBHelper{
 
-    static var dataBase: OpaquePointer?
+    var db: OpaquePointer?
+    
+//    init(){
+//        self.connect()
+//    }
     
     //array of structs to hold item information
     var itemsList = [Items]()
@@ -27,8 +31,6 @@ class DBHelper{
 
     //MARK: Data base preparation
     func prepareDatabaseFile() -> String {
-    
-    
     
         //Name of the database
         let fileName: String = "ShopGroupAppDB.db"
@@ -51,6 +53,51 @@ class DBHelper{
         //return the path to the databse.
         return documentUrl.path
     }
+    
+//    func connect(){
+//
+//        // Create Items table
+//        if sqlite3_exec(db, "create table if not exists Items (ID integer primary key autoincrement, Name text, Image text, Price text, Description text, ProductID integer, rightAnswer text, foreign key (ProductID) references Products (ID))", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create Items table --> ", err)
+//        }
+//
+//        // Create products table
+//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, Type text", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create Products table --> ", err)
+//        }
+//
+//        // Create suggested items table
+//        if sqlite3_exec(db, "create table if not exists Suggested Items (ID integer primary key autoincrement, ItemID integer", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create Suggested Items table --> ", err)
+//        }
+//
+//        // Create users table
+//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, Name text, Email text, Password text", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create User table --> ", err)
+//        }
+//
+//        // Create user products table
+//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, UserID integer, ProductID integer", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create User_Products table --> ", err)
+//        }
+//
+//        // Create sqlite sequence table
+//        if sqlite3_exec(db, "create table if not exists sqlite_sequence (name text, seq text", nil, nil, nil) != SQLITE_OK
+//        {
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("error at create sqlite_sequence table --> ", err)
+//        }
+//    }
 
     //MARK: Function to open the database.
     func OpenDatabase() {
@@ -59,7 +106,7 @@ class DBHelper{
         //prints the database to the console so we can find it, if needed.
         print("Data base phat is :", f1)
         //Open the Data base or create it
-        if sqlite3_open(f1, &DBHelper.dataBase) != SQLITE_OK{
+        if sqlite3_open(f1, &db) != SQLITE_OK{
             print("Can not open data base")
         
             }
@@ -73,8 +120,11 @@ class DBHelper{
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
+
+//        if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
+   //         let err = String(cString: sqlite3_errmsg(db)!)
         if sqlite3_prepare(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
-            let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            let err = String(cString: sqlite3_errmsg(DBHelper.db)!)
             print(err)
             return
         }
@@ -102,8 +152,8 @@ class DBHelper{
         //Holds the pointer.
         var stmt : OpaquePointer?
         //Queries the database and prints any error.
-        if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
-            let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+        if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
             return
         }
@@ -127,6 +177,31 @@ class DBHelper{
         }
     }
     
+//    /// Get all items from database
+//    func getAllItems() -> [String] {
+//        
+//        var itemList = [String]()
+//        var pointer: OpaquePointer?
+//        
+//        let query = "select name from Items where ID = '" + String(1) + "'"
+//        
+//        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("There is an error at DBHelper.getAllItems() --> ", err)
+//        }
+//        
+//        
+//            while(sqlite3_step(pointer)) == SQLITE_ROW
+//            {
+//                print("enters while")
+//                let name = String(cString:sqlite3_column_text(pointer, 0))
+//                print(name)
+//                itemList.append(name)
+//            }
+//            return itemList
+//        
+//    }// End of getAllUsers()
+    
     //MARK: function to pull the suggested items and store them.
     func fetchSuggestedItems(){
         
@@ -135,8 +210,8 @@ class DBHelper{
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
-            if sqlite3_prepare_v2(DBHelper.dataBase, query, -2, &stmt, nil) != SQLITE_OK{
-                let err = String(cString: sqlite3_errmsg(DBHelper.dataBase)!)
+            if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
                 print(err)
                 return
             }
