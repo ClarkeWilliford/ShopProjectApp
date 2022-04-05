@@ -26,7 +26,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     public func configure(with model: ViewController.Model){
         self.myLabel.text = model.text
         self.myImageView.image = UIImage(named: model.imageName)
-        self.myImageView.contentMode = .scaleAspectFit
+        self.myImageView.contentMode = .scaleAspectFill
     }
 
 }
