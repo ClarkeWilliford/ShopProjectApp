@@ -16,21 +16,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     private let caller = DataFetcher()
-    private var data = [Int]()
+    private var data = [0,1,2,3]
     var models = [Model]()
     var itemDetailsCollection = [["magnifyingglass", "Shoe1", "$29.99"],["pencil", "Shoe2", "$150.00"],["scribble", "Shoe2", "$20.00"],["highlighter", "Shoe4", "$34.99"]]
-    
     var cellCount = 0
     var dodCollection = ["scribble", "dodPrice", "dodName"]
     
     /// Defines number of rows in tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2 + itemDetailsCollection.count
+        return 2 + data.count
     }
     
     /// Defines height of table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
+        return 450
     }
     
     /// Defines each cell at a specific row in table view
@@ -49,18 +48,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "ExampleTableViewCell", for: indexPath) as! ExampleTableViewCell
-            cell.button1.setImage(UIImage(systemName: itemDetailsCollection[0][0]), for: .normal)
-            cell.button2.setImage(UIImage(systemName: itemDetailsCollection[1][0]), for: .normal)
-            cell.button3.setImage(UIImage(systemName: itemDetailsCollection[2][0]), for: .normal)
-            cell.button4.setImage(UIImage(systemName: itemDetailsCollection[3][0]), for: .normal)
-            cell.item1Name.text = itemDetailsCollection[0][1]
-            cell.item2Name.text = itemDetailsCollection[1][1]
-            cell.item3Name.text = itemDetailsCollection[2][1]
-            cell.item4Name.text = itemDetailsCollection[3][1]
-            cell.item1Price.text = itemDetailsCollection[0][2]
-            cell.item2Price.text = itemDetailsCollection[1][2]
-            cell.item3Price.text = itemDetailsCollection[2][2]
-            cell.item4Price.text = itemDetailsCollection[3][2]
+//            guard indexPath.row - 2 < db.itemsList.count else {
+//                print("inside cells out of range")
+//                return cell
+//            }
+            print(db.itemsList[indexPath.row - 2].name)
+            cell.button1.setImage(UIImage(named: db.itemsList[indexPath.row - 2].image), for: .normal)
+//            cell.button2.setImage(UIImage(systemName: itemDetailsCollection[1][0]), for: .normal)
+//            cell.button3.setImage(UIImage(systemName: itemDetailsCollection[2][0]), for: .normal)
+//            cell.button4.setImage(UIImage(systemName: itemDetailsCollection[3][0]), for: .normal)
+            cell.item1Name.text = db.itemsList[indexPath.row - 2].name
+//            cell.item2Name.text = itemDetailsCollection[1][1]
+//            cell.item3Name.text = itemDetailsCollection[2][1]
+//            cell.item4Name.text = itemDetailsCollection[3][1]
+            cell.item1Price.text = db.itemsList[indexPath.row - 2].price
+//            cell.item2Price.text = itemDetailsCollection[1][2]
+//            cell.item3Price.text = itemDetailsCollection[2][2]
+//            cell.item4Price.text = itemDetailsCollection[3][2]
             cellCount += 1
             return cell
         }
@@ -71,12 +75,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         db.OpenDatabase()
-        
         db.FetchItems()
-        
-        for list in db.itemsList{
-            print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
-        }
+//        for list in db.itemsList{
+//            print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
+//        }
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ExampleTableViewCell", bundle: nil)
@@ -85,21 +87,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(nib, forCellReuseIdentifier: "DealOfTheDayTableViewCell")
         tableView.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         
-        models.append(Model(text: "elden ring", imageName: "eldenRing"))
-        models.append(Model(text: "colgate", imageName: "colgate30Advanced"))
-        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
-        models.append(Model(text: "jordans", imageName: "jordanNavy"))
-        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
-        models.append(Model(text: "adidas", imageName: "adidasBlack"))
-        models.append(Model(text: "jacket", imageName: "carharrtjacket"))
-        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
-        models.append(Model(text: "jordans", imageName: "jordanNavy"))
-        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
-        models.append(Model(text: "adidas", imageName: "adidasBlack"))
-        models.append(Model(text: "jacket", imageName: "carharrtjacket"))
-        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
-        models.append(Model(text: "jordans", imageName: "jordanNavy"))
-        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
+//        models.append(Model(text: "elden ring", imageName: "eldenRing"))
+//        models.append(Model(text: "colgate", imageName: "colgate30Advanced"))
+//        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
+//        models.append(Model(text: "jordans", imageName: "jordanNavy"))
+//        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
+//        models.append(Model(text: "adidas", imageName: "adidasBlack"))
+//        models.append(Model(text: "jacket", imageName: "carharrtjacket"))
+//        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
+//        models.append(Model(text: "jordans", imageName: "jordanNavy"))
+//        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
+//        models.append(Model(text: "adidas", imageName: "adidasBlack"))
+//        models.append(Model(text: "jacket", imageName: "carharrtjacket"))
+//        models.append(Model(text: "cottonelle", imageName: "Cottonelle"))
+//        models.append(Model(text: "jordans", imageName: "jordanNavy"))
+//        models.append(Model(text: "Kirby", imageName: "KirbyGame"))
     }
 
     /// Update table view upon scrolling down
@@ -152,6 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 switch result{
                 case .success(let moreData):
                     self?.data.append(contentsOf: moreData)
+                    print(self?.data)
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
                     }
@@ -166,9 +169,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     struct Model{
         let text: String
         let imageName: String
-        init(text: String, imageName: String){
+        let price: String
+        init(text: String, imageName: String, price: String){
             self.text = text
             self.imageName = imageName
+            self.price = price
         }
     }
 }

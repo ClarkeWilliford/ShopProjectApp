@@ -202,6 +202,37 @@ class DBHelper{
 //        
 //    }// End of getAllUsers()
     
+//    //MARK: function to pull the products.
+//    func fetchProducts(){
+//        
+//            //Holds the query.
+//            let query = "select * from products"
+//            //Holds the pointer.
+//            var stmt : OpaquePointer?
+//            //Queries the database and prints any error.
+//            if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+//                let err = String(cString: sqlite3_errmsg(dataBase)!)
+//                print(err)
+//                return
+//            }
+//            
+//            //While loop to add information to the array.
+//            while(sqlite3_step(stmt) == SQLITE_ROW){
+//                //variables to hold the information retrieved.
+//                let id = sqlite3_column_int(stmt, 0)
+//                let name = String(cString: sqlite3_column_text(stmt,1))
+//                //Appends the information to the array.
+//                suggestedList.append(Suggested(id: Int(id), itemID: (itemID)))
+//            }
+//                //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
+//                for list in suggestedList{
+//                    FetchItemByID(idToFetch: list.itemID)
+//                    suggestedItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID))
+//                                          
+//                //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
+//                }
+//            }
+    
     //MARK: function to pull the suggested items and store them.
     func fetchSuggestedItems(){
         
