@@ -9,20 +9,10 @@ import UIKit
 
 class ExampleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    @IBOutlet weak var button4: UIButton!
     
-    @IBOutlet weak var item1Name: UILabel!
-    @IBOutlet weak var item2Name: UILabel!
-    @IBOutlet weak var item3Name: UILabel!
-    @IBOutlet weak var item4Name: UILabel!
-    
-    @IBOutlet weak var item1Price: UILabel!
-    @IBOutlet weak var item2Price: UILabel!
-    @IBOutlet weak var item3Price: UILabel!
-    @IBOutlet weak var item4Price: UILabel!
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var itemImage: UIButton!
+    @IBOutlet weak var itemPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,16 +24,9 @@ class ExampleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func button1(_ sender: Any) {
-        print("button1 clicked")
-    }
-    @IBAction func button2(_ sender: Any) {
-        print("button2 clicked")
-    }
-    @IBAction func button3(_ sender: Any) {
-        print("button3 clicked")
-    }
-    @IBAction func button4(_ sender: Any) {print("button4 clicked")
+    
+    @IBAction func itemSelected(_ sender: Any) {
+        print("item selected")
     }
     
 }

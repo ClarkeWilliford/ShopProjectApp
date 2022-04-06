@@ -24,4 +24,7 @@ class DealOfTheDayTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func itemSelected(_ sender: Any) {
+        print("dod selected")
+    }
 }

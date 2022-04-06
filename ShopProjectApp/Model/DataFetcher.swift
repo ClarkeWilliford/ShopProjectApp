@@ -16,6 +16,11 @@ class DataFetcher{
                     ,"user24","user25","user26","user27","user28","user29","user30","user31","user32"]
     
     func fetchData(pagination: Bool = false, completion: @escaping (Result<[Int], Error>)->Void){
+        guard getFetchFunctionCount < db.itemsList.count else{
+            print("no more data")
+            return
+        }
+        
         if pagination{
             isPaginating = true
         }
