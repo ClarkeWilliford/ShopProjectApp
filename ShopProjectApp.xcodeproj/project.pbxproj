@@ -144,6 +144,7 @@
 			children = (
 				4CB7E7AD27FB38F000D8DAF2 /* ViewController.swift */,
 				2D7BAE8827FB82B700981E92 /* SearchBarViewController.swift */,
+				2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */,
 				2D7BAE8A27FB82E400981E92 /* ExampleTableViewCell.swift */,
 				2D7BAE8E27FB852B00981E92 /* DealOfTheDayTableViewCell.swift */,
 				2D7BAE9227FB863F00981E92 /* CollectionTableViewCell.swift */,
@@ -153,7 +154,6 @@
 				2DB24F5E27FCA39700F0ADA4 /* PurchasedItemTableViewCell.swift */,
 				4CB7E7EF27FCCD5D00D8DAF2 /* displayItemViewController.swift */,
 				4CB7E7F127FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift */,
-				2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

@@ -11,22 +11,47 @@ class TabBarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .blue
         //when search button clicked, add search bar
-        let searchButton = UIButton(frame: CGRect(x: 250, y: 15, width: 30, height: 20))
-        searchButton.backgroundColor = .yellow
-        searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        //button.setTitle("Test Button", for: .normal)
-        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        self.view.addSubview(searchButton)
+        let homeButton = UIButton(frame: CGRect(x: 75, y: 15, width: 30, height: 20))
+        homeButton.backgroundColor = .yellow
+        homeButton.setImage(UIImage(systemName: "house"), for: .normal)
+        homeButton.addTarget(self, action: #selector(homeButtonAction), for: .touchUpInside)
+        self.view.addSubview(homeButton)
         
-        //when notificaiton button clicked, navigate to notificaiton page
-        let notificationButton = UIButton(frame: CGRect(x: 300, y: 15, width: 30, height: 20))
-        notificationButton.backgroundColor = .yellow
-        notificationButton.setImage(UIImage(systemName: "bell"), for: .normal)
-        //button.setTitle("Test Button", for: .normal)
-        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        self.view.addSubview(notificationButton)
+        let accountButton = UIButton(frame: CGRect(x: 175, y: 15, width: 30, height: 20))
+        accountButton.backgroundColor = .yellow
+        accountButton.setImage(UIImage(systemName: "person"), for: .normal)
+        accountButton.addTarget(self, action: #selector(accountButtonAction), for: .touchUpInside)
+        self.view.addSubview(accountButton)
+        
+        let cartButton = UIButton(frame: CGRect(x: 275, y: 15, width: 30, height: 20))
+        cartButton.backgroundColor = .yellow
+        cartButton.setImage(UIImage(systemName: "cart"), for: .normal)
+        cartButton.addTarget(self, action: #selector(cartButtonAction), for: .touchUpInside)
+        self.view.addSubview(cartButton)
+    }
+    
+    @objc func homeButtonAction(_sender: UIButton!){
+        print("home button pressed")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homePage")
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated: true, completion:nil)
+    }
+    @objc func accountButtonAction(_sender: UIButton!){
+        print("account button pressed")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "accountPage")
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated: true, completion:nil)
+    }
+    @objc func cartButtonAction(_sender: UIButton!){
+        print("cart button pressed")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "cartPage")
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated: true, completion:nil)
     }
 
 }

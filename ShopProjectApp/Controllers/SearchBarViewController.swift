@@ -27,13 +27,18 @@ class SearchBarViewController: UIViewController {
         notificationButton.backgroundColor = .clear
         notificationButton.setImage(UIImage(systemName: "bell"), for: .normal)
         //button.setTitle("Test Button", for: .normal)
-        //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        notificationButton.addTarget(self, action: #selector(notificationButtonAction), for: .touchUpInside)
         self.view.addSubview(notificationButton)
+        
         
         let companyLogo = UILabel(frame: CGRect(x: 50, y: 15, width: 100, height: 20))
         companyLogo.text = "GroupApp"
         
         self.view.addSubview(companyLogo)
+    }
+    
+    @objc func notificationButtonAction(_sender: UIButton!){
+        print("notif button pressed")
     }
 
 }
