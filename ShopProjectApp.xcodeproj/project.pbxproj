@@ -127,6 +127,12 @@
 		2D7BAE8327FB802B00981E92 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D7BAE8B27FB82E400981E92 /* ExampleTableViewCell.xib */,
+				2D7BAE8F27FB852B00981E92 /* DealOfTheDayTableViewCell.xib */,
+				2D7BAE9327FB863F00981E92 /* CollectionTableViewCell.xib */,
+				2D7BAE9727FB86C800981E92 /* MyCollectionViewCell.xib */,
+				2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */,
+				2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */,
 				4CB7E7AF27FB38F000D8DAF2 /* Main.storyboard */,
 				4CB7E7B427FB38F100D8DAF2 /* LaunchScreen.storyboard */,
 			);
@@ -139,19 +145,13 @@
 				4CB7E7AD27FB38F000D8DAF2 /* ViewController.swift */,
 				2D7BAE8827FB82B700981E92 /* SearchBarViewController.swift */,
 				2D7BAE8A27FB82E400981E92 /* ExampleTableViewCell.swift */,
-				2D7BAE8B27FB82E400981E92 /* ExampleTableViewCell.xib */,
 				2D7BAE8E27FB852B00981E92 /* DealOfTheDayTableViewCell.swift */,
-				2D7BAE8F27FB852B00981E92 /* DealOfTheDayTableViewCell.xib */,
 				2D7BAE9227FB863F00981E92 /* CollectionTableViewCell.swift */,
-				2D7BAE9327FB863F00981E92 /* CollectionTableViewCell.xib */,
 				2D7BAE9627FB86C800981E92 /* MyCollectionViewCell.swift */,
-				2D7BAE9727FB86C800981E92 /* MyCollectionViewCell.xib */,
 				2DB24F5227FC89EC00F0ADA4 /* TabBarTableViewController.swift */,
 				2DB24F5827FC98EF00F0ADA4 /* CartViewController.swift */,
 				2DB24F5A27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift */,
-				2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */,
 				2DB24F5E27FCA39700F0ADA4 /* PurchasedItemTableViewCell.swift */,
-				2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */,
 				4CB7E7EF27FCCD5D00D8DAF2 /* displayItemViewController.swift */,
 				4CB7E7F127FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift */,
 			);
