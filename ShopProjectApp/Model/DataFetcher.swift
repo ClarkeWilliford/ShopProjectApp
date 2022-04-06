@@ -11,8 +11,6 @@ class DataFetcher{
     var getFetchFunctionCount = 1
     
     func fetchData(pagination: Bool = false, completion: @escaping (Result<[Int], Error>)->Void){
-        print("inside fetch data")
-        print(db.itemsList.count)
         guard getFetchFunctionCount < db.itemsList.count else{
             print("out of data")
             return
