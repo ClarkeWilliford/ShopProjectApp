@@ -233,6 +233,7 @@ class DBHelper{
                 }
             }
     
+    //MARK:
     func insertUserOrders(userID: Int, itemID: Int){
         
 
@@ -270,6 +271,7 @@ class DBHelper{
             print("data save")
         }
     
+    //MARK: Function to add the users wishlist into the database.
     func insertUserWishlist(userID: Int, itemID: Int){
         
 
@@ -306,7 +308,7 @@ class DBHelper{
             //Prints to the console.
             print("data save")
         }
-    
+    //MARK: function to fetch the items a user has ordered.
     func fetchUserOrderItems(){
         
             //Holds the query.
@@ -336,5 +338,67 @@ class DBHelper{
                 //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }
             }
+    
+    //MARK: a function to get the user inforation from the database and store it in the global variable.
+    func fetchUserByEmail(emailToFetch: String){
+        //Holds the id to use.
+        let emailToUse = emailToFetch
+        //Holds the query.
+        let query = "select * from User where Email = '\(emailToUse)'"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+            return
+        }
+        
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let email = String(cString: sqlite3_column_text(stmt, 2))
+            let password = String(cString: sqlite3_column_text(stmt, 3))
+            let phone = String(cString: sqlite3_column_text(stmt, 4))
+            
+            //Adds the user to the global variable.
+            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone)
+            
+           
+        }
+        
+    }
+    
+    //MARK: function to fetch user information based on their phone and set the global variable. 
+    func fetchUserByPhone(phoneToFetch: String){
+        //Holds the id to use.
+        let phoneToUse = phoneToFetch
+        //Holds the query.
+        let query = "select * from User where Phone = '\(phoneToUse)'"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+            return
+        }
+        
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let email = String(cString: sqlite3_column_text(stmt, 2))
+            let password = String(cString: sqlite3_column_text(stmt, 3))
+            let phone = String(cString: sqlite3_column_text(stmt, 4))
+            
+            //Adds the user to the global variable.
+            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone)
+        
+        }
+    }
     
 }
