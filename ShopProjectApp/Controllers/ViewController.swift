@@ -86,17 +86,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        print(db.suggestedItems)
         
         
-//        models.append(Model(text: db.itemsList[0].name, imageName: db.itemsList[0].image, price: db.itemsList[0].price))
-//        models.append(Model(text: db.itemsList[1].name, imageName: db.itemsList[1].image, price: db.itemsList[1].price))
-//        models.append(Model(text: db.itemsList[2].name, imageName: db.itemsList[2].image, price: db.itemsList[2].price))
-//        models.append(Model(text: db.itemsList[3].name, imageName: db.itemsList[3].image, price: db.itemsList[3].price))
-//        models.append(Model(text: db.itemsList[4].name, imageName: db.itemsList[4].image, price: db.itemsList[4].price))
-//        models.append(Model(text: db.itemsList[5].name, imageName: db.itemsList[5].image, price: db.itemsList[5].price))
-//        models.append(Model(text: db.itemsList[6].name, imageName: db.itemsList[6].image, price: db.itemsList[6].price))
-//        models.append(Model(text: db.itemsList[7].name, imageName: db.itemsList[7].image, price: db.itemsList[7].price))
-//        models.append(Model(text: db.itemsList[8].name, imageName: db.itemsList[8].image, price: db.itemsList[8].price))
-//        models.append(Model(text: db.itemsList[9].name, imageName: db.itemsList[9].image, price: db.itemsList[9].price))
-//        models.append(Model(text: db.itemsList[10].name, imageName: db.itemsList[10].image, price: db.itemsList[10].price))
+        models.append(Model(text: db.itemsList[0].name, imageName: db.itemsList[0].image, price: db.itemsList[0].price))
+        models.append(Model(text: db.itemsList[1].name, imageName: db.itemsList[1].image, price: db.itemsList[1].price))
+        models.append(Model(text: db.itemsList[2].name, imageName: db.itemsList[2].image, price: db.itemsList[2].price))
+        models.append(Model(text: db.itemsList[3].name, imageName: db.itemsList[3].image, price: db.itemsList[3].price))
+        models.append(Model(text: db.itemsList[4].name, imageName: db.itemsList[4].image, price: db.itemsList[4].price))
+        models.append(Model(text: db.itemsList[5].name, imageName: db.itemsList[5].image, price: db.itemsList[5].price))
+        models.append(Model(text: db.itemsList[6].name, imageName: db.itemsList[6].image, price: db.itemsList[6].price))
+        models.append(Model(text: db.itemsList[7].name, imageName: db.itemsList[7].image, price: db.itemsList[7].price))
+        models.append(Model(text: db.itemsList[8].name, imageName: db.itemsList[8].image, price: db.itemsList[8].price))
+        models.append(Model(text: db.itemsList[9].name, imageName: db.itemsList[9].image, price: db.itemsList[9].price))
+        models.append(Model(text: db.itemsList[10].name, imageName: db.itemsList[10].image, price: db.itemsList[10].price))
 
     }
 
