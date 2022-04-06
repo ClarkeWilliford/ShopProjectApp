@@ -237,7 +237,7 @@ class DBHelper{
     func fetchSuggestedItems(){
         
             //Holds the query.
-            let query = "select * from suggested_items"
+            let query = "select * from Suggested_Items"
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
