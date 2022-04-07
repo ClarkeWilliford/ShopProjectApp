@@ -17,6 +17,6 @@ class GlobalVariables {
     
     static var itemsInWishlist = [Items]()
 
-    
+    static var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
     
 }

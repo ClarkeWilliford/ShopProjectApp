@@ -60,6 +60,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        GlobalVariables.chosenItem = (Items(id: db.itemsList[indexPath.row - 2].id, name: db.itemsList[indexPath.row - 2].name, image: db.itemsList[indexPath.row - 2].image, price: db.itemsList[indexPath.row - 2].price, description: db.itemsList[indexPath.row - 2].description, productID: db.itemsList[indexPath.row - 2].productID))
+        
+        Navigation.goToItemDisplay()
+        
+        
+    }
+    
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

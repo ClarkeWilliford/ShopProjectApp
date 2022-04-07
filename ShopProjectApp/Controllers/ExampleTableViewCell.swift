@@ -24,9 +24,9 @@ class ExampleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
     @IBAction func itemSelected(_ sender: Any) {
         print("item selected")
+        
     }
     
 }
