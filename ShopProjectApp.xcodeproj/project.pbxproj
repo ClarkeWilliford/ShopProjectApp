@@ -26,6 +26,9 @@
 		2DC35DFD27FDD61900DEAFD1 /* ShopGroupAppDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */; };
 		2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */; };
 		4CA585F327FDECF300BDBF63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F227FDECF300BDBF63 /* User.swift */; };
+		4CA585F727FF417F00BDBF63 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F627FF417F00BDBF63 /* LoginScreen.swift */; };
+		4CA585FC27FF496F00BDBF63 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585FB27FF496F00BDBF63 /* Validation.swift */; };
+		4CA585FE27FF4B6200BDBF63 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585FD27FF4B6200BDBF63 /* Navigation.swift */; };
 		4CB7E7AA27FB38F000D8DAF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */; };
 		4CB7E7AC27FB38F000D8DAF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7AB27FB38F000D8DAF2 /* SceneDelegate.swift */; };
 		4CB7E7AE27FB38F000D8DAF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7AD27FB38F000D8DAF2 /* ViewController.swift */; };
@@ -79,6 +82,9 @@
 		2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4CA585F227FDECF300BDBF63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CA585F627FF417F00BDBF63 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		4CA585FB27FF496F00BDBF63 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		4CA585FD27FF4B6200BDBF63 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		4CB7E7A627FB38F000D8DAF2 /* ShopProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CB7E7AB27FB38F000D8DAF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 		2D7BAE8427FB803700981E92 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CA585F627FF417F00BDBF63 /* LoginScreen.swift */,
 				4CB7E7AD27FB38F000D8DAF2 /* ViewController.swift */,
 				2D7BAE8827FB82B700981E92 /* SearchBarViewController.swift */,
 				2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */,
@@ -158,6 +165,15 @@
 				4CB7E7F127FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4CA585FA27FF496100BDBF63 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4CA585FB27FF496F00BDBF63 /* Validation.swift */,
+				4CA585FD27FF4B6200BDBF63 /* Navigation.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		4CB7E79D27FB38F000D8DAF2 = {
@@ -183,6 +199,7 @@
 		4CB7E7A827FB38F000D8DAF2 /* ShopProjectApp */ = {
 			isa = PBXGroup;
 			children = (
+				4CA585FA27FF496100BDBF63 /* Utilities */,
 				4CB7E7D927FB442F00D8DAF2 /* Model */,
 				2D7BAE8427FB803700981E92 /* Controllers */,
 				2D7BAE8327FB802B00981E92 /* Views */,
@@ -367,14 +384,17 @@
 				2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */,
 				4CB7E7AE27FB38F000D8DAF2 /* ViewController.swift in Sources */,
 				2DB24F5927FC98EF00F0ADA4 /* CartViewController.swift in Sources */,
+				4CA585FE27FF4B6200BDBF63 /* Navigation.swift in Sources */,
 				2DB24F5C27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift in Sources */,
 				2D7BAE8927FB82B700981E92 /* SearchBarViewController.swift in Sources */,
 				2D7BAE9827FB86C800981E92 /* MyCollectionViewCell.swift in Sources */,
 				4CB7E7E327FB90B700D8DAF2 /* Items.swift in Sources */,
 				2D7BAE8C27FB82E400981E92 /* ExampleTableViewCell.swift in Sources */,
 				2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */,
+				4CA585F727FF417F00BDBF63 /* LoginScreen.swift in Sources */,
 				2DB24F6027FCA39700F0ADA4 /* PurchasedItemTableViewCell.swift in Sources */,
 				4CB7E7DF27FB6D0100D8DAF2 /* Suggested.swift in Sources */,
+				4CA585FC27FF496F00BDBF63 /* Validation.swift in Sources */,
 				2D7BAE9A27FB880300981E92 /* DataFetcher.swift in Sources */,
 				4CB7E7AA27FB38F000D8DAF2 /* AppDelegate.swift in Sources */,
 				2D7BAE9027FB852B00981E92 /* DealOfTheDayTableViewCell.swift in Sources */,

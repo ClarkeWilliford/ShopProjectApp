@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xwx-dY-YnA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Hosting Controller-->
+        <scene sceneID="Bs2-Tu-xfn">
+            <objects>
+                <hostingController id="guN-XL-Su5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDk-gR-YYZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1343" y="-62"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -371,6 +379,7 @@
                     <view key="view" contentMode="scaleToFill" id="Fil-Ev-g4Y">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0UJ-GJ-Nf9"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                 </viewController>
@@ -385,6 +394,7 @@
                     <view key="view" contentMode="scaleToFill" id="GFV-J8-wtA">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oIi-p1-iH2"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                     </view>
                 </viewController>
@@ -399,6 +409,7 @@
                     <view key="view" contentMode="scaleToFill" id="o0b-j1-k8J">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ctu-5c-Bc5"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                 </viewController>
@@ -413,6 +424,7 @@
                     <view key="view" contentMode="scaleToFill" id="355-fO-h5Z">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mjd-WX-N5r"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                     </view>
                 </viewController>
@@ -427,6 +439,7 @@
                     <view key="view" contentMode="scaleToFill" id="9id-MJ-a0E">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OAd-i4-8XJ"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                 </viewController>
@@ -441,6 +454,7 @@
                     <view key="view" contentMode="scaleToFill" id="3Md-v8-R7d">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Fh2-z5-3B4"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                     </view>
                 </viewController>
