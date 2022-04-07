@@ -31,13 +31,12 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
         //Fetches the suggested items.
         dataBase.fetchSuggestedItems()
         //Fetches the first item in the Items table as a placeholder.
-        //dataBase.FetchItemByID(idToFetch: 1)
         
         //Sets the UIElements to whatever the chosen item is.
-        imageViewOutlet.image = UIImage(named: dataBase.chosenItem.image)
-        NameLabelOutlet.text = dataBase.chosenItem.name
-        PriceLabelOutlet.text = dataBase.chosenItem.price
-        DescriptionLabelOutlet.text = dataBase.chosenItem.description
+        imageViewOutlet.image = UIImage(named: GlobalVariables.chosenItem.image)
+        NameLabelOutlet.text = GlobalVariables.chosenItem.name
+        PriceLabelOutlet.text = GlobalVariables.chosenItem.price
+        DescriptionLabelOutlet.text = GlobalVariables.chosenItem.description
         
     }
     
@@ -62,11 +61,11 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
     }
     
     @IBAction func addToCartAction(_ sender: UIButton) {
-        GlobalVariables.itemsInCart.append(Items(id: dataBase.chosenItem.id, name: dataBase.chosenItem.name, image: dataBase.chosenItem.image, price: dataBase.chosenItem.price, description: dataBase.chosenItem.description, productID: dataBase.chosenItem.productID))
+        GlobalVariables.itemsInCart.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
     }
     
     @IBAction func addToWishlistAction(_ sender: UIButton) {
-        GlobalVariables.itemsInWishlist.append(Items(id: dataBase.chosenItem.id, name: dataBase.chosenItem.name, image: dataBase.chosenItem.image, price: dataBase.chosenItem.price, description: dataBase.chosenItem.description, productID: dataBase.chosenItem.productID))
+        GlobalVariables.itemsInWishlist.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
     }
     
    

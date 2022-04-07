@@ -20,7 +20,8 @@ class DBHelper{
     var itemsList = [Items]()
     //array of class instance to hold information on a single item.
     var chosenItemList = [Items]()
-    var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
+    
+    var suggestedItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
     //arrays to hold the suggested items.
     var suggestedList = [Suggested]()
     var suggestedItems = [Items]()
@@ -172,10 +173,44 @@ class DBHelper{
             chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
             
             for list in chosenItemList{
-                chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
+                GlobalVariables.chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
             }
         }
     }
+    
+    func FetchSuggestedItemByID(idToFetch: Int){
+        //Holds the id to use.
+        let idToUse = idToFetch
+        //Holds the query.
+        let query = "select * from items where ID = '\(idToUse)'"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+            return
+        }
+        
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let image = String(cString: sqlite3_column_text(stmt, 2))
+            let price = String(cString: sqlite3_column_text(stmt, 3))
+            let description = String(cString: sqlite3_column_text(stmt, 4))
+            let productID = sqlite3_column_int(stmt, 5)
+            //Appends the information to the array.
+            chosenItemList.removeAll()
+            chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
+            
+            for list in chosenItemList{
+                suggestedItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
+            }
+        }
+    }
+    
     
 //    /// Get all items from database
 //    func getAllItems() -> [String] {
@@ -226,8 +261,8 @@ class DBHelper{
             }
                 //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
                 for list in suggestedList{
-                    FetchItemByID(idToFetch: list.itemID)
-                    suggestedItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID))
+                    FetchSuggestedItemByID(idToFetch: list.itemID)
+                    suggestedItems.append(Items(id: suggestedItem.id, name: suggestedItem.name, image: suggestedItem.image, price: suggestedItem.price, description: suggestedItem.description, productID: suggestedItem.productID))
                                           
                 //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }
@@ -333,7 +368,7 @@ class DBHelper{
                 //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
                 for list in userOrderList{
                     FetchItemByID(idToFetch: list.itemID)
-                    orderItems.append(Items(id: chosenItem.id, name: chosenItem.name, image: chosenItem.image, price: chosenItem.price, description: chosenItem.description, productID: chosenItem.productID))
+                    orderItems.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
                                           
                 //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }

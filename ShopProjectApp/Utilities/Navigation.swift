@@ -12,7 +12,7 @@ class Navigation{
     
     static func goToProfileFromSwiftUI(){
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let rootViewController = storyboard.instantiateViewController(withIdentifier: "accountPage")
     
@@ -21,9 +21,20 @@ class Navigation{
             window.endEditing(true)
             window.makeKeyAndVisible()
         }
-        
-            
+    }
+    
+    static func goToItemDisplay(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
         }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let userViewController = storyboard.instantiateViewController(withIdentifier: "itemDisplay")
+        //moves us to the view
+        window.rootViewController = userViewController
+        window.makeKeyAndVisible()
+        
+    }
     
     
     

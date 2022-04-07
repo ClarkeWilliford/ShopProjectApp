@@ -201,7 +201,7 @@
         <!--Display Item View Controller-->
         <scene sceneID="MPN-qm-c9B">
             <objects>
-                <viewController id="3Li-j9-1AR" customClass="displayItemViewController" customModule="ShopProjectApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemDisplay" id="3Li-j9-1AR" customClass="displayItemViewController" customModule="ShopProjectApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xi3-tf-osW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
