@@ -18,6 +18,9 @@ class DataFetcher{
     func fetchData(pagination: Bool = false, completion: @escaping (Result<[Int], Error>)->Void){
         guard getFetchFunctionCount < db.itemsList.count else{
             print("no more data")
+            if pagination{
+                isPaginating = false
+            }
             return
         }
         
@@ -26,14 +29,16 @@ class DataFetcher{
         }
         DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2), execute: { [self] in
             
-            let originalIndexData = [0,1,2,3]
+            let originalIndexData = [0,1,2,3,4]
             var newIndexData = [Int]()
             
             print("inside datafetcher")
+            print(getFetchFunctionCount)
             for index in 5*getFetchFunctionCount...(9*getFetchFunctionCount-4*(getFetchFunctionCount-1)){
                     print(index)
                     newIndexData.append(index)
             }
+            print(newIndexData)
             completion(.success(pagination ? newIndexData : originalIndexData))
             if pagination{
                 isPaginating = false

@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     private let caller = DataFetcher()
-    private var data = [0,1,2,3]
+    private var data = [Int]()
     var models = [Model]()
     var itemDetailsCollection = [["magnifyingglass", "Shoe1", "$29.99"],["pencil", "Shoe2", "$150.00"],["scribble", "Shoe2", "$20.00"],["highlighter", "Shoe4", "$34.99"]]
     var cellCount = 0
@@ -52,7 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "ExampleTableViewCell", for: indexPath) as! ExampleTableViewCell
-            print(db.itemsList[indexPath.row - 2].name)
             cell.itemImage.setImage(UIImage(named: db.itemsList[indexPath.row - 2].image), for: .normal)
             cell.itemName.text = db.itemsList[indexPath.row - 2].name
             cell.itemPrice.text = db.itemsList[indexPath.row - 2].price
@@ -70,8 +69,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        for list in db.itemsList{
 //            print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
 //        }
-        print(db.itemsList.count)
-        print(db.itemsList)
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ExampleTableViewCell", bundle: nil)
@@ -107,8 +104,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         caller.fetchData(pagination: false, completion: { [weak self] result in
             switch result{
             case .success(let data):
-                print("appendable data")
-                print(data)
                 self?.data.append(contentsOf: data)
                 DispatchQueue.main.async{
                     self?.tableView.reloadData()
@@ -131,6 +126,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return footerView
     }
     
+    var count = 0
+    
     /// Determine if page reaches certain location to begin paginating
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         let position = scrollView.contentOffset.y
@@ -143,16 +140,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             caller.fetchData(pagination: true){
                 [weak self] result in
                 DispatchQueue.main.async {
-                    
                     self?.tableView.tableFooterView = nil
                 }
-                
                 switch result{
                 case .success(let moreData):
                     self?.data.append(contentsOf: moreData)
+                    print("in scrollview appendable data")
+                    if self?.count == 0{
+                        self?.data.append(5)
+                        self?.data.append(6)
+                        self?.data.append(7)
+                        self?.data.append(8)
+                        self?.data.append(9)
+                        self?.count += 1
+                    }
+                    print(self?.data.count)
                     print(self?.data)
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
+                    if((self?.data.count)! <= 35){
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
+                    } else {
+                        print("do nothing")
                     }
                 case .failure(_):
                     break
