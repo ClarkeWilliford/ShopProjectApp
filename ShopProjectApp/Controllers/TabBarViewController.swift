@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TabBarViewController: UIViewController {
+    
+    let swiftUIController = UIHostingController(rootView: LoginView())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +45,16 @@ class TabBarViewController: UIViewController {
     @objc func accountButtonAction(_sender: UIButton!){
         print("account button pressed")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Checks to see if there is a user logged in, if they aren't logged in, take them to the login page. 
+        if GlobalVariables.userLoguedIn.name == "" {
+            self.present(swiftUIController, animated: true, completion: nil)
+            
+        }
+        else{
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "accountPage")
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true, completion:nil)
+        }
     }
     @objc func cartButtonAction(_sender: UIButton!){
         print("cart button pressed")
