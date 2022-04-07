@@ -25,6 +25,7 @@
 		2DB24F6127FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */; };
 		2DC35DFD27FDD61900DEAFD1 /* ShopGroupAppDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */; };
 		2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */; };
+		4CA585F327FDECF300BDBF63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F227FDECF300BDBF63 /* User.swift */; };
 		4CB7E7AA27FB38F000D8DAF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */; };
 		4CB7E7AC27FB38F000D8DAF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7AB27FB38F000D8DAF2 /* SceneDelegate.swift */; };
 		4CB7E7AE27FB38F000D8DAF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7AD27FB38F000D8DAF2 /* ViewController.swift */; };
@@ -77,6 +78,7 @@
 		2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasedItemTableViewCell.xib; sourceTree = "<group>"; };
 		2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		4CA585F227FDECF300BDBF63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CB7E7A627FB38F000D8DAF2 /* ShopProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CB7E7AB27FB38F000D8DAF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				2D7BAE8527FB821700981E92 /* DataFetcher.swift */,
 				4CB7E7E627FC9CD100D8DAF2 /* UserOrder.swift */,
 				4CB7E7F327FCE23B00D8DAF2 /* GlobalVariables.swift */,
+				4CA585F227FDECF300BDBF63 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				4CB7E7F027FCCD5E00D8DAF2 /* displayItemViewController.swift in Sources */,
 				4CB7E7F227FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift in Sources */,
 				2D7BAE9427FB863F00981E92 /* CollectionTableViewCell.swift in Sources */,
+				4CA585F327FDECF300BDBF63 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

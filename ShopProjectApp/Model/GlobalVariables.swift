@@ -8,7 +8,10 @@
 import Foundation
 
 class GlobalVariables {
-   //  static var userLoguedIn : User = User(id: 0, name: "", password: "", subscribed: "", ranking: "", email: "", blocked: "false")
+    
+    static var userLoguedIn : User = User(id: 0, name: "", email: "", password: "", phone: "")
+    
+    static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "")
     
     static var itemsInCart = [Items]()
     
