@@ -397,6 +397,7 @@ class DBHelper{
             
             //Adds the user to the global variable.
             GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone)
+            
         
         }
     }
