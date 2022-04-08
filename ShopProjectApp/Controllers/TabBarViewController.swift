@@ -45,7 +45,7 @@ class TabBarViewController: UIViewController {
     @objc func accountButtonAction(_sender: UIButton!){
         print("account button pressed")
         //Checks to see if there is a user logged in, if they aren't logged in, take them to the login page. 
-        if GlobalVariables.userLoguedIn.name == "" {
+        if GlobalVariables.userLoggedIn.name == "" {
             self.present(swiftUIController, animated: true, completion: nil)
         }
         else{
