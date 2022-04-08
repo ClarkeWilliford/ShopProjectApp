@@ -25,6 +25,7 @@
 		2DB24F6127FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */; };
 		2DC35DFD27FDD61900DEAFD1 /* ShopGroupAppDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */; };
 		2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */; };
+		2DD7273C27FF560600CC28EE /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7273B27FF560600CC28EE /* PlaceOrderViewController.swift */; };
 		4CA585F327FDECF300BDBF63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F227FDECF300BDBF63 /* User.swift */; };
 		4CB7E7AA27FB38F000D8DAF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */; };
 		4CB7E7AC27FB38F000D8DAF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7AB27FB38F000D8DAF2 /* SceneDelegate.swift */; };
@@ -78,6 +79,7 @@
 		2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasedItemTableViewCell.xib; sourceTree = "<group>"; };
 		2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2DD7273B27FF560600CC28EE /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
 		4CA585F227FDECF300BDBF63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CB7E7A627FB38F000D8DAF2 /* ShopProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB7E7A927FB38F000D8DAF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				2DB24F5E27FCA39700F0ADA4 /* PurchasedItemTableViewCell.swift */,
 				4CB7E7EF27FCCD5D00D8DAF2 /* displayItemViewController.swift */,
 				4CB7E7F127FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift */,
+				2DD7273B27FF560600CC28EE /* PlaceOrderViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				4CB7E7E727FC9CD100D8DAF2 /* UserOrder.swift in Sources */,
 				4CB7E7F027FCCD5E00D8DAF2 /* displayItemViewController.swift in Sources */,
 				4CB7E7F227FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift in Sources */,
+				2DD7273C27FF560600CC28EE /* PlaceOrderViewController.swift in Sources */,
 				2D7BAE9427FB863F00981E92 /* CollectionTableViewCell.swift in Sources */,
 				4CA585F327FDECF300BDBF63 /* User.swift in Sources */,
 			);

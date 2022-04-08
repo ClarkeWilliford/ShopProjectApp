@@ -11,6 +11,7 @@ class ProceedToCheckoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var checkOutButton: UIButton!
+    var didNavigate = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +24,7 @@ class ProceedToCheckoutTableViewCell: UITableViewCell {
     }
     
     @IBAction func proceedToCheckout(_ sender: Any) {
-        print("proceeding to checkout")
+        NotificationCenter.default.post(name: Notification.Name("procedToCheckoutAction"), object: nil)
+        print("clicked place order")
     }
 }
