@@ -9,7 +9,7 @@ import Foundation
 
 class GlobalVariables {
     
-    static var userLoguedIn : User = User(id: 0, name: "", email: "", password: "", phone: "")
+    static var userLoggedIn : User = User(id: 0, name: "", email: "", password: "", phone: "")
     
     static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "")
     

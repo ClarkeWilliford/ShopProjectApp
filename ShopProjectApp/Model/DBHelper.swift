@@ -171,11 +171,11 @@ class DBHelper{
             //Appends the information to the array.
             chosenItemList.removeAll()
             chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
-            
+            }
+        
             for list in chosenItemList{
                 GlobalVariables.chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
             }
-        }
     }
     
     func FetchSuggestedItemByID(idToFetch: Int){
@@ -204,10 +204,10 @@ class DBHelper{
             //Appends the information to the array.
             chosenItemList.removeAll()
             chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
-            
+        }
+        
             for list in chosenItemList{
                 suggestedItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
-            }
         }
     }
     
@@ -346,8 +346,10 @@ class DBHelper{
     //MARK: function to fetch the items a user has ordered.
     func fetchUserOrderItems(){
         
+            //Id to use is pulled from the global variable
+            let id = GlobalVariables.userLoggedIn.id
             //Holds the query.
-            let query = "select * from suggested_items"
+            let query = "select * from User_Orders where UserID = \(id)"
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
@@ -360,17 +362,17 @@ class DBHelper{
             //While loop to add information to the array.
             while(sqlite3_step(stmt) == SQLITE_ROW){
                 //variables to hold the information retrieved.
-                let userID = sqlite3_column_int(stmt, 0)
-                let itemID = sqlite3_column_int(stmt,1)
+                let id = sqlite3_column_int(stmt, 0)
+                let userID = sqlite3_column_int(stmt, 1)
+                let itemID = sqlite3_column_int(stmt,2)
                 //Appends the information to the array.
-                userOrderList.append(UserOrder(userID: Int(userID), itemID: Int(itemID)))
+                userOrderList.append(UserOrder(id: Int(id), userID: Int(userID), itemID: Int(itemID)))
             }
                 //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
                 for list in userOrderList{
                     FetchItemByID(idToFetch: list.itemID)
                     orderItems.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
                                           
-                //should be able to use the "Suggested Items" array to set the information for the suggested items in any of our collection views.
                 }
             }
     
