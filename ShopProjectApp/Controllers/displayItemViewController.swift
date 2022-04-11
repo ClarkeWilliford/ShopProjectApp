@@ -60,14 +60,22 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
         return CGSize(width: 250, height: 250)
     }
     
-    @IBAction func addToCartAction(_ sender: UIButton) {
-        GlobalVariables.itemsInCart.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+    /// When cell in collection view is clicked, navigates to display item page with relevant chosen item data
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        GlobalVariables.chosenItem = (Items(id: db.suggestedItems[indexPath.row].id, name: db.suggestedItems[indexPath.row].name, image: db.suggestedItems[indexPath.row].image, price: db.suggestedItems[indexPath.row].price, description: db.suggestedItems[indexPath.row].description, productID: db.suggestedItems[indexPath.row].productID))
+        Navigation.goToItemDisplay()
     }
     
+    /// Adds selected chosen item to cart
+    @IBAction func addToCartAction(_ sender: UIButton) {
+        print("added to cart")
+        GlobalVariables.itemsInCart.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+        print(GlobalVariables.itemsInCart)
+    }
+    
+    /// Adds selected chosen item to wish list
     @IBAction func addToWishlistAction(_ sender: UIButton) {
         GlobalVariables.itemsInWishlist.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+        
     }
-    
-   
-
 }
