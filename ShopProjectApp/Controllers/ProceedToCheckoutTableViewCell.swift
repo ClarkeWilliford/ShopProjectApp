@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Defines the cell that displays item total and proceed to checkout button  in the relevant table view
 class ProceedToCheckoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var totalPrice: UILabel!
@@ -21,6 +22,7 @@ class ProceedToCheckoutTableViewCell: UITableViewCell {
 
     }
     
+    /// Observer of button press to proceed to checkout
     @IBAction func proceedToCheckout(_ sender: Any) {
         NotificationCenter.default.post(name: Notification.Name("procedToCheckoutAction"), object: nil)
         print(GlobalVariables.itemsInCart)

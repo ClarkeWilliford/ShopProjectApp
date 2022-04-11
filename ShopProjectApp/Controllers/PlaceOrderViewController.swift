@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+    Shows the order total, shipping, and tax prices and allows to update billing and shipping address as well as placing order actions
+ */
 class PlaceOrderViewController: UIViewController {
 
     var initialPrice = 0.0
@@ -36,13 +39,19 @@ class PlaceOrderViewController: UIViewController {
         orderTotal.text = String(format: "Order Total: $%.2f",total)
     }
     
-    
+    /// Navigates to edit shipping view
+    /// To Do
     @IBAction func editShipping(_ sender: Any) {
         print("edit shipping")
     }
+    /// Navigates to edit billing view
+    /// To Do
     @IBAction func editBilling(_ sender: Any) {
         print("edit billing")
     }
+    
+    /// Saves the order in relevant variables
+    /// To Do
     @IBAction func placeOrder(_ sender: Any) {
         print(GlobalVariables.itemsInCart)
         GlobalVariables.orderedItems = GlobalVariables.itemsInCart

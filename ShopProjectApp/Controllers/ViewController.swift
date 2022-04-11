@@ -164,7 +164,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    /// Struct that defines the model for what data gets displayed in table view cells
+    /// modelView struct that defines the model for what data gets displayed in table view cells
     struct Model{
         let text: String
         let imageName: String

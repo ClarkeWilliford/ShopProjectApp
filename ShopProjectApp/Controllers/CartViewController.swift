@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+    Defines the cart view page. Hosts a collection view in the first row, an image, price and name in the second row, and the set of available items in the subsequent rows
+ */
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +66,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.addObserver(self, selector: #selector(actionReceived), name: Notification.Name("procedToCheckoutAction"), object:  nil)
     }
     
+    /// Navigate to relevant view once the action under observation has been observed via the notification center
     @objc func actionReceived(){
         performSegue(withIdentifier: "showPlaceOrder", sender: nil)
     }
     
+    /// Prepares to transfer data from this view to the next when the segue is performed from actionReceiveed()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPlaceOrder" {
             if let nextViewController = segue.destination as? PlaceOrderViewController {

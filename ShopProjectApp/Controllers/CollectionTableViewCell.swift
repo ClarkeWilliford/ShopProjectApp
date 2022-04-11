@@ -15,6 +15,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return UINib(nibName: "CollectionTableViewCell", bundle: nil)
     }
 
+    /// configurs the items as model structs to be loaded into collection view
     func configure(with models: [ViewController.Model]){
         self.models = models
         collectionView.reloadData()
@@ -36,6 +37,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return CGSize(width: 250, height: 250)
     }
     
+    /// Defines the items in the collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         GlobalVariables.chosenItem = (Items(id: db.suggestedItems[indexPath.row].id, name: db.suggestedItems[indexPath.row].name, image: db.suggestedItems[indexPath.row].image, price: db.suggestedItems[indexPath.row].price, description: db.suggestedItems[indexPath.row].description, productID: db.suggestedItems[indexPath.row].productID))
         Navigation.goToItemDisplay()
