@@ -9,7 +9,8 @@ import UIKit
 
 var db = DBHelper()
 /// Defines the home page view
-
+let randomInt = Int.random(in: 0..<35)
+var itemsWereOrdered = false
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -29,30 +30,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     /// Defines height of table view
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450
+        return 350
     }
     
     /// Defines each cell at a specific row in table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+            //UICollectionView.dequeueConfiguredReusableCell(cell) as! CollectionTableViewCell
             cell.configure(with: models)
             return cell
         }
         else if(indexPath.row == 1){
             var cell = tableView.dequeueReusableCell(withIdentifier: "DealOfTheDayTableViewCell", for: indexPath) as! DealOfTheDayTableViewCell
-            cell.dodImage.setImage(UIImage(named: db.itemsList[0].image.replacingOccurrences(of: ".jpeg", with: "")), for: .normal)
-            cell.dodName.text = db.itemsList[0].name
-            cell.dodPrice.text = db.itemsList[0].price
-            print("inside dod")
-            print(db.itemsList[0].image.replacingOccurrences(of: ".jpeg", with: ""))
-            print(db.itemsList[0].name)
-            print(db.itemsList[0].price)
+            cell.dodImage.image = UIImage(named: db.itemsList[randomInt].image.replacingOccurrences(of: ".jpeg", with: ""))
+            cell.dodName.text = db.itemsList[randomInt].name
+            cell.dodPrice.text = db.itemsList[randomInt].price
             return cell
             
         } else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "ExampleTableViewCell", for: indexPath) as! ExampleTableViewCell
-            cell.itemImage.setImage(UIImage(named: db.itemsList[indexPath.row - 2].image), for: .normal)
+            cell.itemImage.image = UIImage(named: db.itemsList[indexPath.row - 2].image)
             cell.itemName.text = db.itemsList[indexPath.row - 2].name
             cell.itemPrice.text = db.itemsList[indexPath.row - 2].price
             cellCount += 1
@@ -61,12 +59,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1{
+            GlobalVariables.chosenItem = (Items(id: db.itemsList[randomInt].id, name: db.itemsList[randomInt].name, image: db.itemsList[randomInt].image, price: db.itemsList[randomInt].price, description: db.itemsList[randomInt].description, productID: db.itemsList[randomInt].productID))
+        }
+        else if indexPath.row > 1{
         GlobalVariables.chosenItem = (Items(id: db.itemsList[indexPath.row - 2].id, name: db.itemsList[indexPath.row - 2].name, image: db.itemsList[indexPath.row - 2].image, price: db.itemsList[indexPath.row - 2].price, description: db.itemsList[indexPath.row - 2].description, productID: db.itemsList[indexPath.row - 2].productID))
-        
+        }
         Navigation.goToItemDisplay()
-        
-        
-    }
+}
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -74,9 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         db.OpenDatabase()
         db.FetchItems()
-//        for list in db.itemsList{
-//            print("the item id is \(list.id) the name is \(list.name) the price is \(list.price) the description is \(list.description)")
-//        }
+        db.fetchSuggestedItems()
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ExampleTableViewCell", bundle: nil)
@@ -85,30 +83,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(nib, forCellReuseIdentifier: "DealOfTheDayTableViewCell")
         tableView.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         
-        //no such table: suggested_items error. gives empty suggested items. probably because suggested items name in database is Suggested Items and not suggested_items. needs to be updated.
-//        print("suggested items")
-//        db.fetchSuggestedItems()
-//        print(db.suggestedItems)
-        
-        
-        models.append(Model(text: db.itemsList[0].name, imageName: db.itemsList[0].image, price: db.itemsList[0].price))
-        models.append(Model(text: db.itemsList[1].name, imageName: db.itemsList[1].image, price: db.itemsList[1].price))
-        models.append(Model(text: db.itemsList[2].name, imageName: db.itemsList[2].image, price: db.itemsList[2].price))
-        models.append(Model(text: db.itemsList[3].name, imageName: db.itemsList[3].image, price: db.itemsList[3].price))
-        models.append(Model(text: db.itemsList[4].name, imageName: db.itemsList[4].image, price: db.itemsList[4].price))
-        models.append(Model(text: db.itemsList[5].name, imageName: db.itemsList[5].image, price: db.itemsList[5].price))
-        models.append(Model(text: db.itemsList[6].name, imageName: db.itemsList[6].image, price: db.itemsList[6].price))
-        models.append(Model(text: db.itemsList[7].name, imageName: db.itemsList[7].image, price: db.itemsList[7].price))
-        models.append(Model(text: db.itemsList[8].name, imageName: db.itemsList[8].image, price: db.itemsList[8].price))
-        models.append(Model(text: db.itemsList[9].name, imageName: db.itemsList[9].image, price: db.itemsList[9].price))
-        models.append(Model(text: db.itemsList[10].name, imageName: db.itemsList[10].image, price: db.itemsList[10].price))
+        models.append(Model(text: db.suggestedItems[0].name, imageName: db.suggestedItems[0].image, price: db.suggestedItems[0].price))
+        models.append(Model(text: db.suggestedItems[1].name, imageName: db.suggestedItems[1].image, price: db.suggestedItems[1].price))
+        models.append(Model(text: db.suggestedItems[2].name, imageName: db.suggestedItems[2].image, price: db.suggestedItems[2].price))
+        models.append(Model(text: db.suggestedItems[3].name, imageName: db.suggestedItems[3].image, price: db.suggestedItems[3].price))
+        models.append(Model(text: db.suggestedItems[4].name, imageName: db.suggestedItems[4].image, price: db.suggestedItems[4].price))
+
 
     }
 
     /// Update table view upon scrolling down
     override func viewDidLayoutSubviews() {
         tableView.frame = view.bounds
-        print("viewlayoutsubviews")
         caller.fetchData(pagination: false, completion: { [weak self] result in
             switch result{
             case .success(let data):
@@ -153,7 +139,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 switch result{
                 case .success(let moreData):
                     self?.data.append(contentsOf: moreData)
-                    print("in scrollview appendable data")
                     if self?.count == 0{
                         self?.data.append(5)
                         self?.data.append(6)
@@ -162,13 +147,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self?.data.append(9)
                         self?.count += 1
                     }
-                    print(self?.data.count)
-                    print(self?.data)
-                    if((self?.data.count)! <= 35){
-                        DispatchQueue.main.async {
-                            self?.tableView.reloadData()
+                    if(((self?.data.count)) != nil){
+                        if((self?.data.count)! <= 35){
+                            DispatchQueue.main.async {
+                                self?.tableView.reloadData()
+                            }
                         }
-                    } else {
+                    }
+                    else {
                         print("do nothing")
                     }
                 case .failure(_):
@@ -178,7 +164,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    /// Struct that defines the model for what data gets displayed in table view cells
+    /// modelView struct that defines the model for what data gets displayed in table view cells
     struct Model{
         let text: String
         let imageName: String

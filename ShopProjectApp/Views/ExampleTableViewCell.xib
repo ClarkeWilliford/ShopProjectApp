@@ -22,46 +22,43 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBJ-gG-IMX">
-                        <rect key="frame" x="20" y="74" width="310" height="21"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-lB-mQv">
+                        <rect key="frame" x="20" y="62" width="240" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="175" id="WZV-zi-DBJ"/>
+                            <constraint firstAttribute="width" constant="175" id="bAk-Gz-L7b"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUL-UA-yuV">
+                        <rect key="frame" x="42" y="208" width="83" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="175" id="z73-xd-D2o"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjP-pV-ybl">
-                        <rect key="frame" x="25" y="100" width="150" height="150"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3g-ak-Olc">
+                        <rect key="frame" x="42" y="251" width="39" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="LQ8-YO-7R5"/>
-                            <constraint firstAttribute="width" constant="150" id="lhK-Ca-pjv"/>
+                            <constraint firstAttribute="width" constant="175" id="Fee-Cs-yk9"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title=""/>
-                        <connections>
-                            <action selector="itemSelected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cPM-9m-R1j"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-Jt-DbO">
-                        <rect key="frame" x="34" y="265" width="302" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XjP-pV-ybl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="086-b6-IZp"/>
-                    <constraint firstItem="HDI-Jt-DbO" firstAttribute="top" secondItem="XjP-pV-ybl" secondAttribute="bottom" constant="15" id="V7t-4r-HYh"/>
-                    <constraint firstItem="XjP-pV-ybl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="WHN-jo-Qu1"/>
-                    <constraint firstItem="iBJ-gG-IMX" firstAttribute="top" secondItem="sZh-1a-CcN" secondAttribute="bottom" constant="50" id="Wuh-ay-vNX"/>
-                    <constraint firstItem="XjP-pV-ybl" firstAttribute="top" secondItem="iBJ-gG-IMX" secondAttribute="bottom" constant="5" id="bJa-EJ-08i"/>
-                    <constraint firstItem="XjP-pV-ybl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jte-Cv-sDM"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="XjP-pV-ybl" secondAttribute="trailing" constant="5" id="xP9-1b-xRg"/>
+                    <constraint firstItem="Z3g-ak-Olc" firstAttribute="top" secondItem="JUL-UA-yuV" secondAttribute="bottom" constant="5" id="dE7-yI-UGV"/>
+                    <constraint firstItem="JUL-UA-yuV" firstAttribute="top" secondItem="nBF-lB-mQv" secondAttribute="bottom" constant="10" id="lbo-Cy-aF7"/>
+                    <constraint firstItem="nBF-lB-mQv" firstAttribute="top" secondItem="sZh-1a-CcN" secondAttribute="bottom" constant="15" id="vbZ-9T-Xi7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="itemImage" destination="XjP-pV-ybl" id="Vk8-P1-lX7"/>
-                <outlet property="itemName" destination="iBJ-gG-IMX" id="rud-GR-gqK"/>
-                <outlet property="itemPrice" destination="HDI-Jt-DbO" id="T7F-hx-vfI"/>
+                <outlet property="itemImage" destination="nBF-lB-mQv" id="RmD-P5-ife"/>
+                <outlet property="itemName" destination="JUL-UA-yuV" id="5kc-jD-nAB"/>
+                <outlet property="itemPrice" destination="Z3g-ak-Olc" id="QGa-gu-agj"/>
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="198.21428571428569"/>
         </tableViewCell>

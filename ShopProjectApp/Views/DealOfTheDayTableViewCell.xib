@@ -12,55 +12,53 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealOfTheDayTableViewCell" rowHeight="350" id="KGk-i7-Jjw" customClass="DealOfTheDayTableViewCell" customModule="ShopProjectApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Deal of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMF-w6-x2w">
-                        <rect key="frame" x="34" y="29" width="296" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UmE-41-WYJ">
-                        <rect key="frame" x="20" y="100" width="150" height="150"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-tP-zai">
+                        <rect key="frame" x="62" y="76" width="240" height="128"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="SmC-Sh-dUj"/>
-                            <constraint firstAttribute="height" constant="150" id="YFC-6k-0zz"/>
+                            <constraint firstAttribute="width" constant="175" id="BWb-hH-gsb"/>
+                            <constraint firstAttribute="height" constant="175" id="bak-Em-hpn"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title=""/>
-                        <connections>
-                            <action selector="itemSelected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wdp-Zu-RzY"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-8e-fqC">
-                        <rect key="frame" x="33" y="265" width="311" height="21"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hox-m3-GlT">
+                        <rect key="frame" x="62" y="229" width="39" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="175" id="kEb-x6-0sQ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5r-57-2i5">
-                        <rect key="frame" x="33" y="291" width="311" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-kY-Z5I">
+                        <rect key="frame" x="62" y="269" width="83" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="175" id="ju5-FJ-xoL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Deal of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMF-w6-x2w">
+                        <rect key="frame" x="62" y="28" width="296" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="UmE-41-WYJ" firstAttribute="top" secondItem="GMF-w6-x2w" secondAttribute="bottom" constant="50" id="2Yj-k2-hbr"/>
-                    <constraint firstItem="2Jt-8e-fqC" firstAttribute="top" secondItem="UmE-41-WYJ" secondAttribute="bottom" constant="15" id="CDH-O0-0cX"/>
-                    <constraint firstItem="UmE-41-WYJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CSQ-mN-eR5"/>
-                    <constraint firstItem="UmE-41-WYJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="O8Q-f6-G8H"/>
-                    <constraint firstItem="h5r-57-2i5" firstAttribute="top" secondItem="2Jt-8e-fqC" secondAttribute="bottom" constant="5" id="UbB-L4-lXR"/>
-                    <constraint firstItem="UmE-41-WYJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="z9x-7V-VBE"/>
+                    <constraint firstItem="hox-m3-GlT" firstAttribute="top" secondItem="Yi7-tP-zai" secondAttribute="bottom" constant="10" id="NP2-mZ-hKb"/>
+                    <constraint firstItem="Yi7-tP-zai" firstAttribute="top" secondItem="GMF-w6-x2w" secondAttribute="bottom" constant="15" id="PGT-2C-T3Z"/>
+                    <constraint firstItem="RNe-kY-Z5I" firstAttribute="top" secondItem="hox-m3-GlT" secondAttribute="bottom" constant="10" id="S8D-2h-q3M"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dodImage" destination="UmE-41-WYJ" id="1zX-Sr-yHG"/>
-                <outlet property="dodName" destination="2Jt-8e-fqC" id="3Nw-j7-lGV"/>
-                <outlet property="dodPrice" destination="h5r-57-2i5" id="ABy-OW-YMP"/>
+                <outlet property="dodImage" destination="Yi7-tP-zai" id="sd9-gj-lWT"/>
+                <outlet property="dodName" destination="RNe-kY-Z5I" id="RSU-8c-l0h"/>
+                <outlet property="dodPrice" destination="hox-m3-GlT" id="80p-QC-Pu6"/>
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="198.21428571428569"/>
         </tableViewCell>
