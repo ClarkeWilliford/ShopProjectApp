@@ -36,6 +36,11 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return CGSize(width: 250, height: 250)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        GlobalVariables.chosenItem = (Items(id: db.suggestedItems[indexPath.row].id, name: db.suggestedItems[indexPath.row].name, image: db.suggestedItems[indexPath.row].image, price: db.suggestedItems[indexPath.row].price, description: db.suggestedItems[indexPath.row].description, productID: db.suggestedItems[indexPath.row].productID))
+        Navigation.goToItemDisplay()
+    }
+    
     
     
     override func awakeFromNib() {

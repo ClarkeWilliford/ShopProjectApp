@@ -9,70 +9,70 @@ import UIKit
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var purchasedItems = [["magnifyingglass", "Shoe1", "$29.99"],["pencil", "Shoe2", "$150.00"],["scribble", "Shoe3", "$20.00"],["highlighter", "Shoe4", "$34.99"]]
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + purchasedItems.count
+        return 1 + GlobalVariables.itemsInCart.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 350
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20.0
-//    }
+
     
     var total = 0.0
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if(indexPath.row == 0){
             var cell = tableView.dequeueReusableCell(withIdentifier: "ProceedToCheckoutTableViewCell", for: indexPath) as! ProceedToCheckoutTableViewCell
             cell.totalPrice.text = String(total)
             return cell
         } else{
             var cell = tableView.dequeueReusableCell(withIdentifier: "PurchasedItemTableViewCell", for: indexPath) as! PurchasedItemTableViewCell
-            cell.itemImage.image = UIImage(systemName: purchasedItems[indexPath.row - 1][0])
-            cell.itemName.text = purchasedItems[indexPath.row - 1][1]
-            cell.itemPrice.text = purchasedItems[indexPath.row - 1][2]
-//            cell.itemQuantity.text = "2"
-//            var intItemQuantity = Int(cell.itemQuantity.text!)!
-//            var priceString = purchasedItems[indexPath.row - 1][2]
-//            priceString.remove(at: priceString.startIndex)
-//            var doubleItemPrice = Double(priceString)!
-//            total = total + doubleItemPrice*Double(intItemQuantity) - doubleItemPrice
-//            print(total)
+            print(GlobalVariables.itemsInCart[indexPath.row - 1].image.replacingOccurrences(of: ".jpeg", with: ""))
+            cell.itemImage.image = UIImage(named: GlobalVariables.itemsInCart[indexPath.row - 1].image.replacingOccurrences(of: ".jpeg", with: ""))
+            cell.itemName.text = GlobalVariables.itemsInCart[indexPath.row - 1].name ?? "No items in cart"
+            cell.itemPrice.text = GlobalVariables.itemsInCart[indexPath.row - 1].price ?? ""
+            var priceString = GlobalVariables.itemsInCart[indexPath.row - 1].price ?? ""
+            priceString.remove(at: priceString.startIndex)
+            total = total - Double(priceString)! + Double(Int(cell.itemQuantity.text!)!) * Double(priceString)!
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+
+
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        for items in 0..<purchasedItems.count{
-            var priceString = purchasedItems[items][2]
+        for items in 0..<GlobalVariables.itemsInCart.count{
+            var priceString = GlobalVariables.itemsInCart[items].price
             priceString.remove(at: priceString.startIndex)
-            print(priceString)
             total += Double(priceString)!
         }
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         var nib = UINib(nibName: "ProceedToCheckoutTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ProceedToCheckoutTableViewCell")
         nib = UINib(nibName: "PurchasedItemTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PurchasedItemTableViewCell")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(actionReceived), name: Notification.Name("procedToCheckoutAction"), object:  nil)
     }
     
-
+    @objc func actionReceived(){
+        performSegue(withIdentifier: "showPlaceOrder", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPlaceOrder" {
+            if let nextViewController = segue.destination as? PlaceOrderViewController {
+                nextViewController.initialPrice = total
+            }
+        }
+    }
 }
 

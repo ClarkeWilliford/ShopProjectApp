@@ -15,6 +15,8 @@ class GlobalVariables {
     
     static var itemsInCart = [Items]()
     
+    static var orderedItems = [Items]()
+    
     static var itemsInWishlist = [Items]()
 
     static var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)

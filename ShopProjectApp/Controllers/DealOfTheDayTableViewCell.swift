@@ -10,7 +10,7 @@ import UIKit
 class DealOfTheDayTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var dodImage: UIButton!
+    @IBOutlet weak var dodImage: UIImageView!
     @IBOutlet weak var dodPrice: UILabel!
     @IBOutlet weak var dodName: UILabel!
     override func awakeFromNib() {
@@ -20,11 +20,6 @@ class DealOfTheDayTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
-    }
-    
-    @IBAction func itemSelected(_ sender: Any) {
-        print("dod selected")
     }
 }

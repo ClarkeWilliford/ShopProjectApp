@@ -14,19 +14,20 @@ class PurchasedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemQuantity: UILabel!
     @IBOutlet weak var stepper: UIStepper!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        stepper.value = 1
+        itemQuantity.text = "1"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
-    @IBAction func stepperFunction(_ sender: Any) {
-        itemQuantity.text = String((sender as AnyObject).value)
+    @IBAction func stepperFunction(_ sender: UIStepper) {
+        itemQuantity.text = Int(sender.value).description
+        print("stepper click")
     }
     
 }
