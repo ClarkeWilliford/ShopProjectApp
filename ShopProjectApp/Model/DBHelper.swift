@@ -374,6 +374,7 @@ class DBHelper{
                     orderItems.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
                                           
                 }
+                GlobalVariables.orderItems = orderItems
             }
     
     //MARK: a function to get the user inforation from the database and store it in the global variable.
@@ -399,9 +400,10 @@ class DBHelper{
             let email = String(cString: sqlite3_column_text(stmt, 2))
             let password = String(cString: sqlite3_column_text(stmt, 3))
             let phone = String(cString: sqlite3_column_text(stmt, 4))
+            let balance = String(cString: sqlite3_column_text(stmt, 5))
             
             //Adds the user to the global variable.
-            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone)
+            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone, balance: balance)
             
            
         }
@@ -431,12 +433,30 @@ class DBHelper{
             let email = String(cString: sqlite3_column_text(stmt, 2))
             let password = String(cString: sqlite3_column_text(stmt, 3))
             let phone = String(cString: sqlite3_column_text(stmt, 4))
+            let balance = String(cString: sqlite3_column_text(stmt, 5))
             
             //Adds the user to the global variable.
-            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone)
+            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone, balance: balance)
             
         
         }
+    }
+    
+    //MARK: function to remove items from the User_Orders table.
+    func deleteUserOrdersItems(userId: Int, idToDelete: Int){
+        //variable to hold the datbase query.
+        let query = "DELETE FROM User_Orders WHERE UserID = \(userId) AND ItemID = \(idToDelete)"
+        //variable to hold the opaquepointer object.
+        var stmt : OpaquePointer? = nil
+        //Queries datbase and prints any errors.
+        if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) == SQLITE_OK{
+            if sqlite3_step(stmt) == SQLITE_DONE{
+                print("Data deleted successfully")
+            }else{
+                print("Data not deleted")
+            }
+        }
+        
     }
     
 }

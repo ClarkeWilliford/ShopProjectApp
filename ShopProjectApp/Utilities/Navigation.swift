@@ -36,6 +36,30 @@ class Navigation{
         
     }
     
+    static func goToProfile(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let ProfileViewController = storyboard.instantiateViewController(withIdentifier: "accountPage")
+        //moves us to the view
+        window.rootViewController = ProfileViewController
+        window.makeKeyAndVisible()
+    }
+    
+    static func goToRefund(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let RefundViewController = storyboard.instantiateViewController(withIdentifier: "refundView")
+        //moves us to the view
+        window.rootViewController = RefundViewController
+        window.makeKeyAndVisible()
+    }
+    
     
     
     

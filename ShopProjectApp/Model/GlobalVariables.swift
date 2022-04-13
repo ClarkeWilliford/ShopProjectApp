@@ -9,14 +9,18 @@ import Foundation
 
 class GlobalVariables {
     
-    static var userLoggedIn : User = User(id: 0, name: "", email: "", password: "", phone: "")
+    static var userLoggedIn : User = User(id: 0, name: "", email: "", password: "", phone: "", balance: "")
     
-    static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "")
+    static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "", balance: "")
     
     static var itemsInCart = [Items]()
     
     static var itemsInWishlist = [Items]()
 
     static var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
+    
+    static var itemsToRefund = [Items]()
+    
+    static var orderItems = [Items]()
     
 }
