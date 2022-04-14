@@ -459,4 +459,63 @@ class DBHelper{
         
     }
     
+    //MARK: function to add the refund balance to the user so it stays with them each time.
+    func updateUserBalance(userID: Int, balance: String){
+        //variable to hold our database query
+        let query = "UPDATE User SET Balance = '\(balance)' WHERE UserID = \(userID)"
+        //variable for the opaquepointer object.
+        var stmt : OpaquePointer?
+        //Query the datbase
+        if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase))
+            print(err)
+        }else if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) == SQLITE_OK{
+            if sqlite3_step(stmt) == SQLITE_DONE{
+                print("balance updated")
+            }else{
+                print("balance not updated")
+            }
+    
+        }else{
+            print("Update statement not prepared")
+        }
+        sqlite3_finalize(stmt)
+    }
+    
+    //MARK: function to add the feedback to the User_Feedback table in the database.
+    func insertUserFeedback(userID: Int, feedback: String){
+        //Holds the data proviced to the function.
+        let feed = feedback as NSString
+        let id = userID
+
+        //Holds the pointer for the database.
+        var stmt: OpaquePointer?
+        //Holds the Query for the database.
+        let query = "INSERT INTO User_Feedback (UserID,Feedback) VALUES (?,?)"
+       //Sends teh query to the database.
+
+        if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+        }
+        //binds the user ID, prints an error if the database throws an error message.
+        if sqlite3_bind_int(stmt, 1, Int32(id)) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+        }
+        //binds the Feedback, prints an error if the database throws an error message.
+        if sqlite3_bind_text(stmt, 2, feed.utf8String, -1, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+        }
+        //Check if the action succeeded.
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+        }
+        //prints to console.
+        print("Feedback added to database")
+        
+    }
+    
 }

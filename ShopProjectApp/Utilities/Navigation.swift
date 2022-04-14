@@ -60,6 +60,18 @@ class Navigation{
         window.makeKeyAndVisible()
     }
     
+    static func goToFeedback(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let feedbackViewController = storyboard.instantiateViewController(withIdentifier: "feedbackScreen")
+        //moves us to the view
+        window.rootViewController = feedbackViewController
+        window.makeKeyAndVisible()
+        
+    }
     
     
     

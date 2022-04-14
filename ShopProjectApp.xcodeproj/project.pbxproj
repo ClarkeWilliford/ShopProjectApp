@@ -27,6 +27,7 @@
 		2DC35DFD27FDD61900DEAFD1 /* ShopGroupAppDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */; };
 		2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */; };
 		4C36F72D28076B1000F0C400 /* refundCellSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F72C28076B1000F0C400 /* refundCellSelector.swift */; };
+		4C36F72F28086B0C00F0C400 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F72E28086B0C00F0C400 /* FeedbackViewController.swift */; };
 		4CA585F327FDECF300BDBF63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F227FDECF300BDBF63 /* User.swift */; };
 		4CA585F727FF417F00BDBF63 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F627FF417F00BDBF63 /* LoginScreen.swift */; };
 		4CA585FC27FF496F00BDBF63 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585FB27FF496F00BDBF63 /* Validation.swift */; };
@@ -89,6 +90,7 @@
 		2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4C36F72C28076B1000F0C400 /* refundCellSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = refundCellSelector.swift; sourceTree = "<group>"; };
+		4C36F72E28086B0C00F0C400 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		4CA585F227FDECF300BDBF63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CA585F627FF417F00BDBF63 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		4CA585FB27FF496F00BDBF63 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				4CA586012800A13E00BDBF63 /* profileUserOrderCollectionViewCell.swift */,
 				4CA586062804C49B00BDBF63 /* RefundViewController.swift */,
 				4CA586082806135300BDBF63 /* RefundTableViewCell.swift */,
+				4C36F72E28086B0C00F0C400 /* FeedbackViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				4CB7E7F027FCCD5E00D8DAF2 /* displayItemViewController.swift in Sources */,
 				4CB7E7F227FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift in Sources */,
 				4CA5860028009CAF00BDBF63 /* ProfileViewController.swift in Sources */,
+				4C36F72F28086B0C00F0C400 /* FeedbackViewController.swift in Sources */,
 				2D7BAE9427FB863F00981E92 /* CollectionTableViewCell.swift in Sources */,
 				4CA586072804C49B00BDBF63 /* RefundViewController.swift in Sources */,
 				4CA585F327FDECF300BDBF63 /* User.swift in Sources */,

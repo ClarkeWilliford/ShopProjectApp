@@ -73,7 +73,7 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         GlobalVariables.itemsToRefund = [Items]()
         GlobalVariables.userLoggedIn.balance = "$\(refundBalance)"
-
+        database.updateUserBalance(userID: GlobalVariables.userLoggedIn.id, balance: GlobalVariables.userLoggedIn.balance)
         Navigation.goToProfile()
         
     }
