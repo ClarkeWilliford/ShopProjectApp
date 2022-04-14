@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -298,7 +298,7 @@
                         <outlet property="trackMyOrderButtonOutlet" destination="uZo-Y8-aRb" id="4oi-da-fQr"/>
                         <outlet property="userEmailOutlet" destination="yQz-Q9-kU1" id="pVM-9n-9ob"/>
                         <outlet property="userImageOutlet" destination="U60-In-xHa" id="6eh-AO-z8s"/>
-                        <outlet property="userNameOutlet" destination="yQz-Q9-kU1" id="0hz-EE-P3Q"/>
+                        <outlet property="userNameOutlet" destination="7F1-2t-SMX" id="gPc-YT-Lbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHN-MM-dzG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -518,7 +518,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPm-Gd-jhW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iBg-Qo-Ykf"/>
                                     <constraint firstAttribute="width" constant="415" id="xTt-cf-Kyg"/>
@@ -528,7 +528,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crk-E8-Yni">
-                                <rect key="frame" x="106" y="75" width="250" height="25"/>
+                                <rect key="frame" x="106" y="119" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="wCc-od-ErL"/>
                                     <constraint firstAttribute="width" constant="250" id="z9j-Gc-xdT"/>
@@ -538,7 +538,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping &amp; handling:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-4g-oat">
-                                <rect key="frame" x="106" y="115" width="250" height="25"/>
+                                <rect key="frame" x="106" y="159" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="7Xj-Lx-BOw"/>
                                     <constraint firstAttribute="height" constant="25" id="NGD-au-JOx"/>
@@ -558,7 +558,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Total: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTV-Ea-Zg5">
-                                <rect key="frame" x="106" y="205" width="250" height="25"/>
+                                <rect key="frame" x="106" y="249" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="19D-8y-6qu"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="8gI-2E-1PH"/>
@@ -570,7 +570,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEd-RX-aZe">
-                                <rect key="frame" x="106" y="255" width="250" height="25"/>
+                                <rect key="frame" x="106" y="299" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="MYO-vw-5Y9"/>
                                     <constraint firstAttribute="height" constant="25" id="eXh-dF-dMF"/>
@@ -580,7 +580,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Io-iY-lnW">
-                                <rect key="frame" x="106" y="305" width="250" height="25"/>
+                                <rect key="frame" x="106" y="349" width="250" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="9c4-pm-S7q"/>
                                     <constraint firstAttribute="width" constant="250" id="OiE-rQ-zeT"/>
@@ -802,6 +802,7 @@
                     <view key="view" contentMode="scaleToFill" id="zRJ-jO-VWE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KrA-ui-SLU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -809,9 +810,51 @@
             </objects>
             <point key="canvasLocation" x="1374" y="1292"/>
         </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="0Zh-Qh-JXx">
+            <objects>
+                <viewController storyboardIdentifier="feedbackScreen" id="Tx9-mh-wqQ" customClass="FeedbackViewController" customModule="ShopProjectApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="btk-ED-kxN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Please proivde your feedback here. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I1v-pZ-Ya6">
+                                <rect key="frame" x="68" y="110" width="277" height="317"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sQ-wZ-2XK">
+                                <rect key="frame" x="137" y="478" width="143" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Submit Feedback"/>
+                                <connections>
+                                    <action selector="feedbackSubmitButtonAction:" destination="Tx9-mh-wqQ" eventType="touchUpInside" id="61v-aP-0IQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LYt-TZ-M6P"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="feedbackSubmitButtonOutlet" destination="8sQ-wZ-2XK" id="YGF-hm-gUT"/>
+                        <outlet property="feedbackTextFieldOutlet" destination="I1v-pZ-Ya6" id="rpG-vk-IJt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ssv-fY-YU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2862.3188405797105" y="-54.241071428571423"/>
+        </scene>
     </scenes>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

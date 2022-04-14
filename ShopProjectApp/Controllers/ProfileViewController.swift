@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var refundBalanceOutlet: UILabel!
     
     //Necessary functions for Collection View
+    /*This sets the number of items in this collection view. We do it based on the number of items in the userrOrderList which is a variable with all the logged in user's items in the User_Orders table in the database. */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionView.reloadData()
         return database.userOrderList.count
@@ -70,6 +71,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func goToFeedbackScreen(_ sender: Any) {
+        Navigation.goToFeedback()
     }
     
 }
