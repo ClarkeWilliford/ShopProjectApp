@@ -64,13 +64,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func goToOrderTracker(_ sender: Any) {
+        //setup the bundle infromation.
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //define the next controller to move to.
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "trackerPage")
+        //actually present the next controller.
+        self.present(nextViewController, animated: true, completion:nil)
     }
     
     @IBAction func goToRefundScreen(_ sender: Any) {
+        //calls the function from Navigation.
         Navigation.goToRefund()
     }
     
     @IBAction func goToFeedbackScreen(_ sender: Any) {
+        //calls the function from Navigation.
         Navigation.goToFeedback()
     }
     

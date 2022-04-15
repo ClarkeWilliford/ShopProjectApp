@@ -7,15 +7,23 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class Navigation{
     
-    static func goToProfileFromSwiftUI(){
-        
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: "accountPage")
     
+    
+    
+
+    
+    
+    //MARK: function to move to the profile page from the Login page.
+    static func goToProfileFromSwiftUI(){
+        //defines the storyboard and the bundle.
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //instantiates the view controller we are moving to.
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "accountPage")
+        //sets up and moves to the desired view controller.
         if let window = UIApplication.shared.windows.first{
             window.rootViewController = rootViewController
             window.endEditing(true)
@@ -23,6 +31,7 @@ class Navigation{
         }
     }
     
+    //MARK: function to go to the item display screen.
     static func goToItemDisplay(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
             return
@@ -36,6 +45,7 @@ class Navigation{
         
     }
     
+    //MARK: function to go to the profile screen.
     static func goToProfile(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
             return
@@ -48,6 +58,7 @@ class Navigation{
         window.makeKeyAndVisible()
     }
     
+    //MARK: function to go to the refund page.
     static func goToRefund(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
             return
@@ -60,6 +71,7 @@ class Navigation{
         window.makeKeyAndVisible()
     }
     
+    //MARK: function to go to the feedback page.
     static func goToFeedback(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
             return
@@ -72,7 +84,6 @@ class Navigation{
         window.makeKeyAndVisible()
         
     }
-    
-    
+
     
 }
