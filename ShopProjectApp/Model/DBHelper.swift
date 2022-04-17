@@ -268,7 +268,7 @@ class DBHelper{
                 }
             }
     
-    //MARK:
+    //MARK: function to add the users ordered items into the database.
     func insertUserOrders(userID: Int, itemID: Int){
         
 
@@ -279,7 +279,7 @@ class DBHelper{
 
             var stmt: OpaquePointer?
            // stores the query for the database.
-            let query = "INSERT INTO Users_Orders (UserID,ItemID) VALUES (?,?)"
+            let query = "INSERT INTO User_Orders (UserID,ItemID) VALUES (?,?)"
            
             //Sends the query to the database.
             if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
@@ -462,7 +462,7 @@ class DBHelper{
     //MARK: function to add the refund balance to the user so it stays with them each time.
     func updateUserBalance(userID: Int, balance: String){
         //variable to hold our database query
-        let query = "UPDATE User SET Balance = '\(balance)' WHERE UserID = \(userID)"
+        let query = "UPDATE User SET Balance = '\(balance)' WHERE ID = \(userID)"
         //variable for the opaquepointer object.
         var stmt : OpaquePointer?
         //Query the datbase

@@ -15,6 +15,7 @@ let storedPassword = "asdf"
 
 
 struct LoginView: View {
+    @Environment(\.dismiss) private var dismiss
     
     @State var emailOrPhoneNumber: String = ""
     @State var username: String = ""
@@ -59,7 +60,8 @@ struct LoginView: View {
                         self.authenticationDidPass = true
                         self.authenticationDidFail = false
                         SetGlobalVariable()
-                        goToProfile()
+                        dismiss()
+                        
                         }else {
                         self.authenticationDidFail = true
                         self.authenticationDidPass = false
@@ -98,6 +100,8 @@ struct ContentView_Previews: PreviewProvider {
         Navigation.goToProfileFromSwiftUI()
         
     }
+
+
 
 
 struct titleText: View {

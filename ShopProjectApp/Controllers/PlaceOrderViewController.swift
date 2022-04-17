@@ -6,25 +6,37 @@
 //
 
 import UIKit
+import SwiftUI
 
 /**
     Shows the order total, shipping, and tax prices and allows to update billing and shipping address as well as placing order actions
  */
 class PlaceOrderViewController: UIViewController {
 
+    //variables to hold the various prices and tax info.
     var initialPrice = 0.0
     var shippingPrice = 0.0
     var taxPrice = 0.0
     var total = 0.0
     
+    
+    
+    //Outlet Block
     @IBOutlet weak var items: UILabel!
     @IBOutlet weak var shippingAndHandling: UILabel!
     @IBOutlet weak var tax: UILabel!
     @IBOutlet weak var orderTotal: UILabel!
     @IBOutlet weak var shippingAddress: UILabel!
     @IBOutlet weak var billingInfo: UILabel!
+    
+    //create an object for the DBHelper class.
+    var database = DBHelper()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //opens the database.
+        database.OpenDatabase()
         items.text = "Items: $\(initialPrice)"
         if(initialPrice >= 200.0){
             shippingPrice = 10.00
@@ -53,11 +65,25 @@ class PlaceOrderViewController: UIViewController {
     /// Saves the order in relevant variables
     /// To Do
     @IBAction func placeOrder(_ sender: Any) {
-        print(GlobalVariables.itemsInCart)
+        let swiftUIController = UIHostingController(rootView: LoginView())
+        
+        if GlobalVariables.userLoggedIn.name == "" {
+            //present the Swift UI conteroller modally, not fullscreen.
+            self.present(swiftUIController, animated: true, completion: nil)
+        }
+        else{
         GlobalVariables.orderedItems = GlobalVariables.itemsInCart
-        print(GlobalVariables.orderedItems)
         itemsWereOrdered = true
-        print(itemsWereOrdered)
         print("order placed")
+            
+        //for loop to add all the items into the database.
+        for item in GlobalVariables.orderedItems{
+            database.insertUserOrders(userID: GlobalVariables.userLoggedIn.id, itemID: item.id)
+            }
+        
+        //Call from Navigation class to send the user to the profile.
+            Navigation.goToProfile()
+        }
+            
     }
 }
