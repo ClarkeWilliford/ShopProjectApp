@@ -29,6 +29,14 @@ class DBHelper{
     //arrays to hold the users order items
     var userOrderList = [UserOrder]()
     var orderItems = [Items]()
+    
+    //arrays to hold the user wishlist items
+    var userWishlistList = [UserOrder]()
+    var wishlistItems = [Items]()
+    
+    //arrays to hold the user history items
+    var userHistoryList = [UserOrder]()
+    var historyItems = [Items]()
 
     //MARK: Data base preparation
     func prepareDatabaseFile() -> String {
@@ -54,51 +62,6 @@ class DBHelper{
         //return the path to the databse.
         return documentUrl.path
     }
-    
-//    func connect(){
-//
-//        // Create Items table
-//        if sqlite3_exec(db, "create table if not exists Items (ID integer primary key autoincrement, Name text, Image text, Price text, Description text, ProductID integer, rightAnswer text, foreign key (ProductID) references Products (ID))", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create Items table --> ", err)
-//        }
-//
-//        // Create products table
-//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, Type text", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create Products table --> ", err)
-//        }
-//
-//        // Create suggested items table
-//        if sqlite3_exec(db, "create table if not exists Suggested Items (ID integer primary key autoincrement, ItemID integer", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create Suggested Items table --> ", err)
-//        }
-//
-//        // Create users table
-//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, Name text, Email text, Password text", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create User table --> ", err)
-//        }
-//
-//        // Create user products table
-//        if sqlite3_exec(db, "create table if not exists Products (ID integer primary key autoincrement, UserID integer, ProductID integer", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create User_Products table --> ", err)
-//        }
-//
-//        // Create sqlite sequence table
-//        if sqlite3_exec(db, "create table if not exists sqlite_sequence (name text, seq text", nil, nil, nil) != SQLITE_OK
-//        {
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("error at create sqlite_sequence table --> ", err)
-//        }
-//    }
 
     //MARK: Function to open the database.
     func OpenDatabase() {
@@ -247,32 +210,6 @@ class DBHelper{
         }
     }
     
-    
-//    /// Get all items from database
-//    func getAllItems() -> [String] {
-//        
-//        var itemList = [String]()
-//        var pointer: OpaquePointer?
-//        
-//        let query = "select name from Items where ID = '" + String(1) + "'"
-//        
-//        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("There is an error at DBHelper.getAllItems() --> ", err)
-//        }
-//        
-//        
-//            while(sqlite3_step(pointer)) == SQLITE_ROW
-//            {
-//                print("enters while")
-//                let name = String(cString:sqlite3_column_text(pointer, 0))
-//                print(name)
-//                itemList.append(name)
-//            }
-//            return itemList
-//        
-//    }// End of getAllUsers()
-    
     //MARK: function to pull the suggested items and store them.
     func fetchSuggestedItems(){
         
@@ -353,7 +290,7 @@ class DBHelper{
 
             var stmt: OpaquePointer?
            // stores the query for the database
-            let query = "INSERT INTO Users_Wishlist (UserID,ItemID) VALUES (?,?)"
+            let query = "INSERT INTO User_Wishlist (UserID,ItemID) VALUES (?,?)"
            
             //Sends the query to the database.
             if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
@@ -379,13 +316,55 @@ class DBHelper{
             //Prints to the console.
             print("data save")
         }
+    
+    //MARK: Function to add the users history into the database.
+    func insertUserHistory(userID: Int, itemID: Int){
+        
+
+            //Variables to hold the information for the User
+            let userID = Int32(userID)
+            let itemID = Int32(itemID)
+            
+
+            var stmt: OpaquePointer?
+           // stores the query for the database
+            let query = "INSERT INTO User_History (UserID,ItemID) VALUES (?,?)"
+           
+            //Sends the query to the database.
+            if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+            //binds the userID
+            if sqlite3_bind_int(stmt, 1, userID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+            //binds the itemID
+            if sqlite3_bind_int(stmt, 2, itemID) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+
+            //Checks if the bindings succeeded.
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+            //Prints to the console.
+            print("data save")
+        }
+    
+    
+    
+    
     //MARK: function to fetch the items a user has ordered.
     func fetchUserOrderItems(){
         
             //Id to use is pulled from the global variable
             let id = GlobalVariables.userLoggedIn.id
             //Holds the query.
-            let query = "select * from User_Orders where UserID = \(id)"
+            let query = "SELECT * from User_Orders where UserID = \(id)"
             //Holds the pointer.
             var stmt : OpaquePointer?
             //Queries the database and prints any error.
@@ -552,6 +531,72 @@ class DBHelper{
         //prints to console.
         print("Feedback added to database")
         
+    }
+    
+    //MARK: a function to grab the wishlist information from the database
+    func fetchUserWishlist(){
+    //Id to use is pulled from the global variable
+    let id = GlobalVariables.userLoggedIn.id
+    //Holds the query.
+    let query = "select * from User_Wishlist where UserID = \(id)"
+    //Holds the pointer.
+    var stmt : OpaquePointer?
+    //Queries the database and prints any error.
+    if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+        let err = String(cString: sqlite3_errmsg(dataBase)!)
+        print(err)
+        return
+    }
+    
+    //While loop to add information to the array.
+    while(sqlite3_step(stmt) == SQLITE_ROW){
+        //variables to hold the information retrieved.
+        let id = sqlite3_column_int(stmt, 0)
+        let userID = sqlite3_column_int(stmt, 1)
+        let itemID = sqlite3_column_int(stmt,2)
+        //Appends the information to the array.
+        userWishlistList.append(UserOrder(id: Int(id), userID: Int(userID), itemID: Int(itemID)))
+    }
+        //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
+        for list in userWishlistList{
+            FetchItemByID(idToFetch: list.itemID)
+            wishlistItems.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+                                  
+        }
+        GlobalVariables.wishlistItems = wishlistItems
+    }
+    
+    //MARK: a function to grab the history information from the database
+    func fetchUserHistory(){
+    //Id to use is pulled from the global variable
+    let id = GlobalVariables.userLoggedIn.id
+    //Holds the query.
+    let query = "select * from User_History where UserID = \(id)"
+    //Holds the pointer.
+    var stmt : OpaquePointer?
+    //Queries the database and prints any error.
+    if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+        let err = String(cString: sqlite3_errmsg(dataBase)!)
+        print(err)
+        return
+    }
+    
+    //While loop to add information to the array.
+    while(sqlite3_step(stmt) == SQLITE_ROW){
+        //variables to hold the information retrieved.
+        let id = sqlite3_column_int(stmt, 0)
+        let userID = sqlite3_column_int(stmt, 1)
+        let itemID = sqlite3_column_int(stmt,2)
+        //Appends the information to the array.
+        userHistoryList.append(UserOrder(id: Int(id), userID: Int(userID), itemID: Int(itemID)))
+    }
+        //For loop fetches the item by the ID, appends the struct object to the array using chosenItem (set in the fetch call) and then clears chosenItem for the next iteration of the loop. At the end, suggested Items should be full of the items suggested, and chosenItem should be empty.
+        for list in userHistoryList{
+            FetchItemByID(idToFetch: list.itemID)
+            historyItems.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+                                  
+        }
+        GlobalVariables.historyItems = historyItems
     }
     
 }

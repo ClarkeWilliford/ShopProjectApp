@@ -11,6 +11,8 @@ import UIKit
 
 let storedUsername = "Stan"
 let storedPassword = "asdf"
+let yellow = Color(red: 255/255, green: 239/255, blue: 93/255)
+
 
 
 
@@ -74,7 +76,7 @@ struct LoginView: View {
                 Text("Login Successful!")
                     .font(.headline)
                     .frame(width: 250, height: 30)
-                    .background(Color.yellow)
+                    .background(yellow)
                     .padding(.bottom, 30)
                     .animation(Animation.default)
                 
@@ -115,7 +117,7 @@ struct titleText: View {
 
 struct loginImage: View {
     var body: some View {
-        Image("cart1")
+        Image("shopAppLogo")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 200, height: 200)
@@ -147,7 +149,7 @@ struct usernameTextField: View {
         TextField("Username", text: $username)
             
             .padding()
-            .background(.mint)
+            .background(yellow)
             .cornerRadius(5.0)
             .padding(.bottom, 20)
     }
@@ -160,7 +162,7 @@ struct passwordTextField: View {
     var body: some View {
         SecureField("Password", text: $password)
             .padding()
-            .background(.mint)
+            .background(yellow)
             .cornerRadius(5.0)
             .padding(.bottom, 20)
     }
