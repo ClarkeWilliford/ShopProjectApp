@@ -13,11 +13,17 @@ class GlobalVariables {
     
     static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "", balance: "")
     
+    static var userHistory = [Items]()
+    
     static var itemsInCart = [Items]()
     
     static var orderedItems = [Items]()
     
     static var itemsInWishlist = [Items]()
+    
+    static var wishlistItems = [Items]()
+    
+    static var historyItems = [Items]()
 
     static var chosenItem = Items(id: 0, name: "", image: "", price: "", description: "", productID: 0)
     

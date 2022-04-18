@@ -76,11 +76,21 @@ class PlaceOrderViewController: UIViewController {
         itemsWereOrdered = true
         print("order placed")
             
-        //for loop to add all the items into the database.
+        //for loop to add the ordered items into the database.
         for item in GlobalVariables.orderedItems{
             database.insertUserOrders(userID: GlobalVariables.userLoggedIn.id, itemID: item.id)
             }
         
+        //for loop to put any wishlist items into the database.
+        for items in GlobalVariables.itemsInWishlist{
+            database.insertUserWishlist(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
+        }
+            
+        //for loop to put any history items into the database.
+        for items in GlobalVariables.userHistory{
+            database.insertUserHistory(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
+        }
+            
         //Call from Navigation class to send the user to the profile.
             Navigation.goToProfile()
         }
