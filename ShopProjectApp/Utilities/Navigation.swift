@@ -84,7 +84,32 @@ class Navigation{
         window.makeKeyAndVisible()
         
     }
+    
+    //MARK: function to go to the wishlist page.
+    static func goToWishlist(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let wishlistViewController = storyboard.instantiateViewController(withIdentifier: "wishlistPage")
+        //moves us to the view
+        window.rootViewController = wishlistViewController
+        window.makeKeyAndVisible()
+    }
 
+    //MARK: function to go to the wishlist page.
+    static func goToHistory(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let historyViewController = storyboard.instantiateViewController(withIdentifier: "historyPage")
+        //moves us to the view
+        window.rootViewController = historyViewController
+        window.makeKeyAndVisible()
+    }
 
     
 }

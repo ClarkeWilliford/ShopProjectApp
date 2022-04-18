@@ -7,11 +7,18 @@
 
 import UIKit
 import SwiftUI
+import SQLite3
 
 class TabBarViewController: UIViewController {
+    
+    var database = DBHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //open the database
+        database.OpenDatabase()
+        
         view.backgroundColor = .blue
         //when search button clicked, add search bar
         let homeButton = UIButton(frame: CGRect(x: 75, y: 15, width: 30, height: 20))
@@ -55,6 +62,20 @@ class TabBarViewController: UIViewController {
             self.present(swiftUIController, animated: true, completion: nil)
         }
         else{
+            //for loop to put any wishlist items into the database.
+            for items in GlobalVariables.itemsInWishlist{
+                database.insertUserWishlist(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
+            }
+            //clears the wishlist now that it's saved in the database.
+            GlobalVariables.itemsInWishlist = [Items]()
+            
+            //for loop to put any history items into the database.
+            for items in GlobalVariables.userHistory{
+                database.insertUserHistory(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
+            }
+            //clears the history now that it's been saved into the database.
+            GlobalVariables.userHistory = [Items]()
+            
             //setup the bundle infromation.
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             //define the next controller to move to.
@@ -68,7 +89,7 @@ class TabBarViewController: UIViewController {
     }
     @objc func cartButtonAction(_sender: UIButton!){
         print("cart button pressed")
-        //Define the bundle and the storyborad.
+        //Define the bundle and the storyboard.
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         //Set the viewController to move to next.
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "cartPage")

@@ -17,11 +17,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var refundButtonOutlet: UIButton!
     @IBOutlet weak var feedbackButtonOutlet: UIButton!
     @IBOutlet weak var trackMyOrderButtonOutlet: UIButton!
+    @IBOutlet weak var wishlistButtonOutlet: UIButton!
+    @IBOutlet weak var historyButtonOutlet: UIButton!
     //Label and Image Outlets
     @IBOutlet weak var userNameOutlet: UILabel!
     @IBOutlet weak var userEmailOutlet: UILabel!
     @IBOutlet weak var userImageOutlet: UIImageView!
     @IBOutlet weak var refundBalanceOutlet: UILabel!
+    @IBOutlet weak var refundBalanceLabel: UILabel!
     
     //Necessary functions for Collection View
     /*This sets the number of items in this collection view. We do it based on the number of items in the userrOrderList which is a variable with all the logged in user's items in the User_Orders table in the database. */
@@ -42,12 +45,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 300, height: 200)
-        
-    }
-    
-    
+
+               // 3 cell same size in each row space between them 4
+               let spaceBetweenCell :CGFloat = 4.0  // if you change this parmters you have to change minimumInteritemSpacingForSectionAt ,
+               let screenWidth = UIScreen.main.bounds.size.width - CGFloat(2 * spaceBetweenCell)
+               let totalSpace = spaceBetweenCell * 2.0;  // there is 2 between  3 item
+        return CGSize(width: (screenWidth - totalSpace)/3, height: (screenWidth-totalSpace)/2.5)
+
+           }
+
+           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+               return 4.0 // space between sections
+           }
+
+           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+               return 4.0 // space between items in row
+           }
     
 
     override func viewDidLoad() {
@@ -60,6 +73,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         userNameOutlet.text = GlobalVariables.userLoggedIn.name
         userEmailOutlet.text = GlobalVariables.userLoggedIn.email
         refundBalanceOutlet.text = GlobalVariables.userLoggedIn.balance
+        
+        //Styling the buttons and labels
+        Styles.styleFilledButton(refundButtonOutlet)
+        Styles.styleFilledButton(feedbackButtonOutlet)
+        Styles.styleFilledButton(trackMyOrderButtonOutlet)
+        Styles.styleFilledButton(wishlistButtonOutlet)
+        Styles.styleFilledButton(historyButtonOutlet)
+        Styles.styleLabel(refundBalanceLabel)
+        
         
     }
     
@@ -80,6 +102,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func goToFeedbackScreen(_ sender: Any) {
         //calls the function from Navigation.
         Navigation.goToFeedback()
+    }
+    
+    @IBAction func goToWishlistScreen(_ sender: Any) {
+        //calls the function from Navigation.
+        Navigation.goToWishlist()
+    }
+    
+    @IBAction func goToHistoryScreen(_ sender: Any) {
+        Navigation.goToHistory()
     }
     
 }
