@@ -141,6 +141,42 @@ class DBHelper{
             }
     }
     
+    //MARK: Function to pull product with specific name.
+    func FetchItemByName(nameToFetch: String){
+        print("inside fetch by name")
+        //Holds the id to use.
+        let nametoUse = nameToFetch.replacingOccurrences(of: "'s", with: "''s")
+        //Holds the query.
+        let query = "select * from Items where Name = '\(nametoUse)'"
+        //Holds the pointer.
+        var stmt : OpaquePointer?
+        //Queries the database and prints any error.
+        if sqlite3_prepare_v2(dataBase, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(dataBase)!)
+            print(err)
+            return
+        }
+        
+        //While loop to add information to the array.
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //variables to hold the information retrieved.
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt,1))
+            let image = String(cString: sqlite3_column_text(stmt, 2))
+            let price = String(cString: sqlite3_column_text(stmt, 3))
+            let description = String(cString: sqlite3_column_text(stmt, 4))
+            let productID = sqlite3_column_int(stmt, 5)
+            //Appends the information to the array.
+            chosenItemList.removeAll()
+            chosenItemList.append(Items(id: Int(id), name: name, image: image, price: price, description: description, productID: Int(productID)))
+            }
+        
+            for list in chosenItemList{
+                GlobalVariables.chosenItem = Items(id: list.id, name: list.name, image: list.image, price: list.price, description: list.description, productID: list.productID)
+            }
+    }
+    
+    
     func FetchSuggestedItemByID(idToFetch: Int){
         //Holds the id to use.
         let idToUse = idToFetch
