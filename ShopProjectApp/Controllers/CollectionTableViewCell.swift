@@ -40,6 +40,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     /// Defines the items in the collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         GlobalVariables.chosenItem = (Items(id: db.suggestedItems[indexPath.row].id, name: db.suggestedItems[indexPath.row].name, image: db.suggestedItems[indexPath.row].image, price: db.suggestedItems[indexPath.row].price, description: db.suggestedItems[indexPath.row].description, productID: db.suggestedItems[indexPath.row].productID))
+        GlobalVariables.userHistory.append(GlobalVariables.chosenItem)
         Navigation.goToItemDisplay()
     }
     

@@ -30,7 +30,6 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
         dataBase.OpenDatabase()
         //Fetches the suggested items.
         dataBase.fetchSuggestedItems()
-        //Fetches the first item in the Items table as a placeholder.
         
         //Sets the UIElements to whatever the chosen item is.
         imageViewOutlet.image = UIImage(named: GlobalVariables.chosenItem.image)
@@ -63,6 +62,7 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
     /// When cell in collection view is clicked, navigates to display item page with relevant chosen item data
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         GlobalVariables.chosenItem = (Items(id: db.suggestedItems[indexPath.row].id, name: db.suggestedItems[indexPath.row].name, image: db.suggestedItems[indexPath.row].image, price: db.suggestedItems[indexPath.row].price, description: db.suggestedItems[indexPath.row].description, productID: db.suggestedItems[indexPath.row].productID))
+        GlobalVariables.userHistory.append(GlobalVariables.chosenItem)
         Navigation.goToItemDisplay()
     }
     
@@ -76,6 +76,7 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
     /// Adds selected chosen item to wish list
     @IBAction func addToWishlistAction(_ sender: UIButton) {
         GlobalVariables.itemsInWishlist.append(Items(id: GlobalVariables.chosenItem.id, name: GlobalVariables.chosenItem.name, image: GlobalVariables.chosenItem.image, price: GlobalVariables.chosenItem.price, description: GlobalVariables.chosenItem.description, productID: GlobalVariables.chosenItem.productID))
+        print(GlobalVariables.itemsInWishlist)
         
     }
 }

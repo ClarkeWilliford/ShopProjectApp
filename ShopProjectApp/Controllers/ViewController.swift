@@ -37,7 +37,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            //UICollectionView.dequeueConfiguredReusableCell(cell) as! CollectionTableViewCell
             cell.configure(with: models)
             return cell
         }
@@ -53,6 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.itemImage.image = UIImage(named: db.itemsList[indexPath.row - 2].image)
             cell.itemName.text = db.itemsList[indexPath.row - 2].name
             cell.itemPrice.text = db.itemsList[indexPath.row - 2].price
+            
             cellCount += 1
             return cell
         }
@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         else if indexPath.row > 1{
         GlobalVariables.chosenItem = (Items(id: db.itemsList[indexPath.row - 2].id, name: db.itemsList[indexPath.row - 2].name, image: db.itemsList[indexPath.row - 2].image, price: db.itemsList[indexPath.row - 2].price, description: db.itemsList[indexPath.row - 2].description, productID: db.itemsList[indexPath.row - 2].productID))
         }
+        GlobalVariables.userHistory.append(GlobalVariables.chosenItem)
         Navigation.goToItemDisplay()
 }
     
@@ -72,6 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        Styles.gradientLayer(view: self.view)
         db.OpenDatabase()
         db.FetchItems()
         db.fetchSuggestedItems()
@@ -94,7 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     /// Update table view upon scrolling down
     override func viewDidLayoutSubviews() {
-        tableView.frame = view.bounds
+        //tableView.frame = view.bounds
         caller.fetchData(pagination: false, completion: { [weak self] result in
             switch result{
             case .success(let data):
