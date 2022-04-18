@@ -31,6 +31,20 @@ class Navigation{
         }
     }
     
+    //MARK: function to move to the profile page from the Login page.
+    static func goToRegisterFromSwiftUI(){
+        //defines the storyboard and the bundle.
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //instantiates the view controller we are moving to.
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
+        //sets up and moves to the desired view controller.
+        if let window = UIApplication.shared.windows.first{
+            window.rootViewController = rootViewController
+            window.endEditing(true)
+            window.makeKeyAndVisible()
+        }
+    }
+    
     //MARK: function to go to the item display screen.
     static func goToItemDisplay(){
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
