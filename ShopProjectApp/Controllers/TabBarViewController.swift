@@ -42,6 +42,11 @@ class TabBarViewController: UIViewController {
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homePage")
         //define that we want to have the modal presentation fill the screen.
         nextViewController.modalPresentationStyle = .fullScreen
+        
+        NotificationCenter.default.post(name: Notification.Name("makeSearchHidden"), object: nil)
+        print("reload table view entered?")
+        NotificationCenter.default.post(name: Notification.Name("reloadTableView2"), object: nil)
+        
         //actually present the next view.
         self.present(nextViewController, animated: true, completion:nil)
         

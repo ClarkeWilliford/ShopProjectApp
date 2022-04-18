@@ -49,13 +49,20 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         hideSearchButton.isHidden = true
         
         companyLogo.text = "GroupApp"
-        
         self.view.addSubview(companyLogo)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(makeSearchHidden), name: Notification.Name("makeSearchHidden"), object: nil)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         GlobalVariables.searchBar.append(searchText)
         NotificationCenter.default.post(name: Notification.Name("newSearchString"), object: nil)
+    }
+    
+    @objc func makeSearchHidden(){
+        searchBar.isHidden = true
+        hideSearchButton.isHidden = true
+        companyLogo.isHidden = false
     }
     
     @objc func notificationButtonAction(_sender: UIButton!){
@@ -67,9 +74,12 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         companyLogo.isHidden = true
         hideSearchButton.isHidden = false
         NotificationCenter.default.post(name: Notification.Name("showSearchContent"), object: nil)
-
+        NotificationCenter.default.post(name: Notification.Name("reloadTableView"), object: nil)
     }
     @objc func hideSearchButtonAction(_sender: UIButton!){
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        GlobalVariables.searchBar.removeAll()
         searchBar.isHidden = true
         searchButton.isHidden = false
         companyLogo.isHidden = false

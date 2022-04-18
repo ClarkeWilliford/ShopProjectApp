@@ -26,6 +26,7 @@ class displayItemViewController: UIViewController, UICollectionViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("inside display item")
         //Sets up an opens the database.
         dataBase.OpenDatabase()
         //Fetches the suggested items.

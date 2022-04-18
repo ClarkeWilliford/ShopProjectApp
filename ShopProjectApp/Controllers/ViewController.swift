@@ -99,10 +99,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     /// Update table view upon scrolling down
     override func viewDidLayoutSubviews() {
-        guard tableView.isHidden == false else{
-            return
-        }
-        tableView.frame = view.bounds
+//        guard tableView.isHidden == false else{
+//            return
+//        }
         caller.fetchData(pagination: false, completion: { [weak self] result in
             switch result{
             case .success(let data):
