@@ -13,9 +13,6 @@ let randomInt = Int.random(in: 0..<35)
 var itemsWereOrdered = false
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
-    
     private let caller = DataFetcher()
     private var data = [Int]()
     var models = [Model]()
@@ -91,11 +88,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         models.append(Model(text: db.suggestedItems[3].name, imageName: db.suggestedItems[3].image, price: db.suggestedItems[3].price))
         models.append(Model(text: db.suggestedItems[4].name, imageName: db.suggestedItems[4].image, price: db.suggestedItems[4].price))
 
-
+        NotificationCenter.default.addObserver(self, selector: #selector(showSearchContent), name: Notification.Name("showSearchContent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSearchContent), name: Notification.Name("hideSearchContent"), object: nil)
+    }
+    
+    @objc func showSearchContent(){
+        tableView.isHidden = true
+    }
+    @objc func hideSearchContent(){
+        tableView.isHidden = false
     }
 
     /// Update table view upon scrolling down
     override func viewDidLayoutSubviews() {
+//        guard tableView.isHidden == false else{
+//            return
+//        }
         //tableView.frame = view.bounds
         caller.fetchData(pagination: false, completion: { [weak self] result in
             switch result{
