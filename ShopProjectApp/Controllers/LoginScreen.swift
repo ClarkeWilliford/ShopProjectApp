@@ -8,6 +8,7 @@
 import SwiftUI
 import SQLite3
 import UIKit
+import FirebaseAuth
 
 let storedUsername = "Stan"
 let storedPassword = "asdf"
@@ -68,9 +69,71 @@ struct LoginView: View {
                         self.authenticationDidFail = true
                         self.authenticationDidPass = false
                     }
+                    
+                    Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
+                        if error != nil {
+                            
+                            Text("Incorrect Login Information")
+                                .offset(y: -10)
+                                .foregroundColor(.red)
+                            
+//                            self.errorLabel.text = error!.localizedDescription
+//                            self.errorLabel.alpha = 1
+                        } else {
+                            
+                            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                            let window = sceneDelegate!.window
+                            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "accountPage")
+                            nextViewController.modalPresentationStyle = .fullScreen
+                            window!.rootViewController = nextViewController
+                            window!.makeKeyAndVisible() }
+                    }
                 }) {
                 LoginButtonText()
             }
+                
+                Button(action: {
+                    
+                    goToRegister()
+
+                    
+                    //                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                    //instantiates the view controller we are moving to.
+//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
+//                    //sets up and moves to the desired view controller.
+//                    if let window = UIApplication.shared.windows.first{
+//                        window.rootViewController = rootViewController
+//                        window.endEditing(true)
+//                        window.makeKeyAndVisible()
+//                    }
+                    
+                    //if (self.username == storedUsername) && (self.password == storedPassword) {
+//                        self.authenticationDidPass = true
+//                        self.authenticationDidFail = false
+//                    }else {
+//                        self.authenticationDidFail = true
+//                        self.authenticationDidPass = false
+//
+//                    }
+//                    guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+//                          let window = sceneDelegate.window else { return }
+//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RegisterVC")
+//                    nextViewController.modalPresentationStyle = .fullScreen
+//
+////                    if let window = UIApplication.shared.windows.first{
+////                        window.rootViewController = nextViewController
+////                        window.endEditing(true)
+////                        window.makeKeyAndVisible()
+//                   // }
+//                    window.rootViewController = nextViewController
+//                    window.makeKeyAndVisible()
+                })
+                {
+                RegisterButtonText()
+            }
+                
         }.padding()
             if authenticationDidPass {
                 Text("Login Successful!")
@@ -103,6 +166,12 @@ struct ContentView_Previews: PreviewProvider {
         
     }
 
+func goToRegister(){
+    
+    Navigation.goToRegisterFromSwiftUI()
+    
+}
+
 
 
 
@@ -132,6 +201,18 @@ struct loginImage: View {
 struct LoginButtonText: View {
     var body: some View {
         Text("Login")
+            .padding()
+            .background(.white)
+            .foregroundColor(.black)
+            .cornerRadius(35.0)
+            .frame(width: 220, height: 60)
+            .font(.headline)
+    }
+}
+
+struct RegisterButtonText: View {
+    var body: some View {
+        Text("Register")
             .padding()
             .background(.white)
             .foregroundColor(.black)
