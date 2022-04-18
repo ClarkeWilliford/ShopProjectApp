@@ -1139,6 +1139,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUb-oB-m4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-457.97101449275368" y="16.741071428571427"/>
+        </scene>
         <!--History View Controller-->
         <scene sceneID="22h-Mb-AOi">
             <objects>
