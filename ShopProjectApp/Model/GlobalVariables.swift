@@ -25,4 +25,6 @@ class GlobalVariables {
     
     static var orderItems = [Items]()
     
+    static var searchBar = [String]()
+    
 }

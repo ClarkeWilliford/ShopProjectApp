@@ -19,6 +19,7 @@
 		2D7BAE9A27FB880300981E92 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7BAE8527FB821700981E92 /* DataFetcher.swift */; };
 		2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */; };
 		2D95551F2800E31C0032C719 /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95551E2800E31C0032C719 /* PlaceOrderViewController.swift */; };
+		2D9C9EFA280CF2F200261604 /* SearchContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C9EF9280CF2F200261604 /* SearchContentViewController.swift */; };
 		2DB24F5927FC98EF00F0ADA4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB24F5827FC98EF00F0ADA4 /* CartViewController.swift */; };
 		2DB24F5C27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB24F5A27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift */; };
 		2DB24F5D27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */; };
@@ -84,6 +85,7 @@
 		2D7BAE9627FB86C800981E92 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		2D7BAE9727FB86C800981E92 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		2D95551E2800E31C0032C719 /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
+		2D9C9EF9280CF2F200261604 /* SearchContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentViewController.swift; sourceTree = "<group>"; };
 		2DB24F5827FC98EF00F0ADA4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		2DB24F5A27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceedToCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProceedToCheckoutTableViewCell.xib; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				4C36F72E28086B0C00F0C400 /* FeedbackViewController.swift */,
 				4C36F7322809B66900F0C400 /* TrackerViewController.swift */,
 				4C36F7362809B6FE00F0C400 /* MapDefaultViewController.swift */,
+				2D9C9EF9280CF2F200261604 /* SearchContentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				4CA585F727FF417F00BDBF63 /* LoginScreen.swift in Sources */,
 				2DB24F6027FCA39700F0ADA4 /* PurchasedItemTableViewCell.swift in Sources */,
 				4C36F7372809B6FE00F0C400 /* MapDefaultViewController.swift in Sources */,
+				2D9C9EFA280CF2F200261604 /* SearchContentViewController.swift in Sources */,
 				4CB7E7DF27FB6D0100D8DAF2 /* Suggested.swift in Sources */,
 				4CA585FC27FF496F00BDBF63 /* Validation.swift in Sources */,
 				4CA586092806135300BDBF63 /* RefundTableViewCell.swift in Sources */,
