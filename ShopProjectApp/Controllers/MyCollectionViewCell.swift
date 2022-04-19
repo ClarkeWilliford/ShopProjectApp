@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Collection view that holds image and label for suggested items
 class MyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var myImageView: UIImageView!
@@ -22,11 +23,10 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    //pass in model struct to configure label and image view
+    /// Pass in model struct to configure label and image view
     public func configure(with model: ViewController.Model){
         self.myLabel.text = model.text
         self.myImageView.image = UIImage(named: model.imageName)
         self.myImageView.contentMode = .scaleAspectFill
     }
-
 }

@@ -9,9 +9,8 @@ import UIKit
 import SwiftUI
 import DropDown
 
-/**
-    Shows the order total, shipping, and tax prices and allows to update billing and shipping address as well as placing order actions
- */
+
+/// Shows the order total, shipping, and tax prices and allows to update billing and shipping address as well as placing order actions
 class PlaceOrderViewController: UIViewController {
 
     //variables to hold the various prices and tax info.
@@ -31,7 +30,8 @@ class PlaceOrderViewController: UIViewController {
     
     //create an object for the DBHelper class.
     var database = DBHelper()
-
+    
+    /// Defines the elements in the drop down menu
     let menu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
@@ -44,6 +44,7 @@ class PlaceOrderViewController: UIViewController {
     
     @IBOutlet weak var showOptionsButton: UIButton!
     
+    /// Loads data from purchased items and displays as total and shipping/taxes. Also contains notification observer to check whether or not a payment option was selected.
     override func viewDidLoad() {
         super.viewDidLoad()
         //opens the database.
@@ -64,10 +65,13 @@ class PlaceOrderViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(setCanPay), name: Notification.Name("setCanPay"), object: nil)
     }
     
+    /// States whether or not a payment option has been chosen.
     @objc func setCanPay(){
         canPay = true
     }
     
+    /// Shows the menu option and navigates to relevant pages upon click
+    /// - Parameter sender: Button action pressed
     @IBAction func showMenu(_ sender: Any) {
         menu.show()
         menu.selectionAction = {
@@ -97,7 +101,7 @@ class PlaceOrderViewController: UIViewController {
         }
     }
     
-    /// Saves the order in relevant variables
+    /// Saves the order in relevant variables and stores in database in user orders table
     @IBAction func placeOrder(_ sender: Any) {
         if canPay == true{
             let swiftUIController = UIHostingController(rootView: LoginView())
@@ -110,22 +114,18 @@ class PlaceOrderViewController: UIViewController {
             GlobalVariables.orderedItems = GlobalVariables.itemsInCart
             itemsWereOrdered = true
             print("order placed")
-                
             //for loop to add the ordered items into the database.
             for item in GlobalVariables.orderedItems{
                 database.insertUserOrders(userID: GlobalVariables.userLoggedIn.id, itemID: item.id)
                 }
-            
             //for loop to put any wishlist items into the database.
             for items in GlobalVariables.itemsInWishlist{
                 database.insertUserWishlist(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
             }
-                
             //for loop to put any history items into the database.
             for items in GlobalVariables.userHistory{
                 database.insertUserHistory(userID: GlobalVariables.userLoggedIn.id, itemID: items.id)
             }
-                
             //Call from Navigation class to send the user to the profile.
                 Navigation.goToProfile()
             }

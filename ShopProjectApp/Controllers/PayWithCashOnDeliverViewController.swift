@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Sets view for the ability to pay with cash on delivery
 class PayWithCashOnDeliverViewController: UIViewController {
 
     
@@ -15,6 +16,8 @@ class PayWithCashOnDeliverViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    /// Sets payment for cash on delivery
+    /// - Parameter sender: button press event
     @IBAction func submit(_ sender: Any) {
         NotificationCenter.default.post(name: Notification.Name("setCanPay"), object: nil)
         navigationController?.popViewController(animated: true)

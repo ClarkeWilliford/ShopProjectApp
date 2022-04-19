@@ -9,10 +9,12 @@ import UIKit
 import SwiftUI
 import SQLite3
 
+/// Defines the elements in the tab bar and ability to navigate between specific view controllers
 class TabBarViewController: UIViewController {
     
     var database = DBHelper()
-
+    
+    /// Loads buttons displayed in the tab bar
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +42,9 @@ class TabBarViewController: UIViewController {
         self.view.addSubview(cartButton)
     }
     
+    /// Navigates to the home page upon home button clicked
+    /// - Parameter _sender: button action
     @objc func homeButtonAction(_sender: UIButton!){
-        print("home button pressed")
-        print("account button pressed")
         //create a variable to tell this class where the bundle is and define it.
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         //setup the view controller to be presented.
@@ -56,8 +58,9 @@ class TabBarViewController: UIViewController {
         
         //actually present the next view.
         self.present(nextViewController, animated: true, completion:nil)
-        
     }
+    /// Navigates to the account page upon home button clicked
+    /// - Parameter _sender: button action
     @objc func accountButtonAction(_sender: UIButton!){
         //Create objects to point to the correct controllers
         let swiftUIController = UIHostingController(rootView: LoginView())
@@ -92,8 +95,9 @@ class TabBarViewController: UIViewController {
         }
         
     }
+    /// Navigates to the cart page upon home button clicked
+    /// - Parameter _sender: button action
     @objc func cartButtonAction(_sender: UIButton!){
-        print("cart button pressed")
         //Define the bundle and the storyboard.
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         //Set the viewController to move to next.
@@ -103,5 +107,4 @@ class TabBarViewController: UIViewController {
         //Present the next view controller.
         self.present(nextViewController, animated: true, completion:nil)
     }
-
 }

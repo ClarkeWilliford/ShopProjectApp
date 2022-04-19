@@ -7,9 +7,9 @@
 
 import UIKit
 
+/// Defines the deal of the day table view cell
 class DealOfTheDayTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var dodImage: UIImageView!
     @IBOutlet weak var dodPrice: UILabel!
     @IBOutlet weak var dodName: UILabel!

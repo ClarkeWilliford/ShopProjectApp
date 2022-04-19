@@ -7,15 +7,23 @@
 
 import UIKit
 
-/**
-    Defines the cart view page. Hosts a collection view in the first row, an image, price and name in the second row, and the set of available items in the subsequent rows
- */
+ ///    Defines the cart view page. Hosts a collection view in the first row, an image, price and name in the second row, and the set of available items in the subsequent rows
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    /// Shows all the items in the cart
+    /// - Parameters:
+    ///   - tableView: items in cart and proceed to check out in cells
+    ///   - section: number of items in cart plus the proceed to check out cell
+    /// - Returns: count of sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 + GlobalVariables.itemsInCart.count
     }
     
+    /// Sets height for the table view cells
+    /// - Parameters:
+    ///   - tableView: Table view holds items in cart
+    ///   - indexPath: row index
+    /// - Returns: height of the table view cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 350
     }
@@ -24,6 +32,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var total = 0.0
     
     
+    /// Defines the various cells in the table view
+    /// - Returns: Cells that are delinated by indexPath.row, row 0 has different cells than rows > 0. Rows > 0 contained item image, name, and price. Row 0 holds a label and button to proceed to check out.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == 0){
             var cell = tableView.dequeueReusableCell(withIdentifier: "ProceedToCheckoutTableViewCell", for: indexPath) as! ProceedToCheckoutTableViewCell
@@ -49,6 +59,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     @IBOutlet weak var tableView: UITableView!
+    /// Sets table view datasource, delegate, and registers nib files as well as setting a notification observer for the proceed to checkout action being received.
     override func viewDidLoad() {
         super.viewDidLoad()
         for items in 0..<GlobalVariables.itemsInCart.count{

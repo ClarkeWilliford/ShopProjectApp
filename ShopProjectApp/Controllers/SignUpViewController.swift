@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
+/// Sign up page loaded before user can perform certain actions like submitting a payment or accessing profile page
 class SignUpViewController: ViewController {
 
     @IBOutlet weak var fName: UITextField!
@@ -21,16 +22,14 @@ class SignUpViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpElements()
-        
     }
     
-
+    
+    /// Gets login credentials through firebase, validates information and then gives access
+    /// - Parameter sender: button press action
     @IBAction func signUp(_ sender: Any) {
-        
         let error = validateFields()
-        
         if error != nil {
             
             showError(error!)
@@ -59,27 +58,18 @@ class SignUpViewController: ViewController {
                         
                         }
                     }
-                    
                     self.transitionToAccountPage()
                 
                   }
-                
-                
                 }
-            
+            }
         }
-        
-        
-    }
     
     func setUpElements(){
-        
         errorLabel.alpha = 0
-        
     }
     
     func validateFields() -> String? {
-        
         if fName.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lName.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || email.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             password.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             

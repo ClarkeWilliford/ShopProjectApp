@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Sets collection view with models object, which contains item image and name. This collection view cell is embedded in the table view of the home page.
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     static let identifier = "CollectionTableViewCell"
@@ -48,7 +49,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self

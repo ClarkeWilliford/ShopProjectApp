@@ -9,9 +9,7 @@ import UIKit
 import SQLite3
 
 class displayItemViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
 
-    
     //Outlet Block
     @IBOutlet weak var imageViewOutlet: UIImageView!
     @IBOutlet weak var NameLabelOutlet: UILabel!

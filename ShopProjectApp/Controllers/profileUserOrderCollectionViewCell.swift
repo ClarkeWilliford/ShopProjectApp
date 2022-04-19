@@ -10,5 +10,4 @@ import UIKit
 class profileUserOrderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var profileUserOrderCollectionCellImage: UIImageView!
     @IBOutlet weak var profileUserOrderCollectionLabel: UILabel!
-    
 }
