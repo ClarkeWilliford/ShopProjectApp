@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Sets view for the ability to pay with net banking
 class PayWithNetBankingViewController: UIViewController {
 
     let verifier = NetBankVerification()
@@ -21,6 +22,8 @@ class PayWithNetBankingViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    /// Sets payment for net banking
+    /// - Parameter sender: button press event
     @IBAction func submit(_ sender: Any) {
         if(verifier.validateNetBank(accountNumber: accountNumber.text!, expMonth: month.text!, expYear: year.text!, pin: pin.text!, error: error) == true){
             NotificationCenter.default.post(name: Notification.Name("setCanPay"), object: nil)

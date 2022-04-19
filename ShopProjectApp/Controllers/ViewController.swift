@@ -8,9 +8,9 @@
 import UIKit
 
 var db = DBHelper()
-/// Defines the home page view
 let randomInt = Int.random(in: 0..<35)
 var itemsWereOrdered = false
+/// Defines the home page view with the items that are stored in the home page table view
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let caller = DataFetcher()

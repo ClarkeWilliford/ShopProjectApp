@@ -25,7 +25,5 @@ class ProceedToCheckoutTableViewCell: UITableViewCell {
     /// Observer of button press to proceed to checkout
     @IBAction func proceedToCheckout(_ sender: Any) {
         NotificationCenter.default.post(name: Notification.Name("procedToCheckoutAction"), object: nil)
-        print(GlobalVariables.itemsInCart)
-        print("clicked place order")
     }
 }

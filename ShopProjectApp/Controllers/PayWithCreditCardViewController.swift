@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Sets view for the ability to pay with credit card
 class PayWithCreditCardViewController: UIViewController {
 
     let verifier = PaymentVerification()
@@ -22,6 +23,8 @@ class PayWithCreditCardViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    /// Sets payment for credit card
+    /// - Parameter sender: button press event
     @IBAction func submit(_ sender: Any) {
         if(verifier.validateCreditCard(creditCard: creditCardNumber.text!, cvc: cvc.text!, expMonth: month.text!, expYear: year.text!, error: error) == true){
             NotificationCenter.default.post(name: Notification.Name("setCanPay"), object: nil)

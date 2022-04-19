@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Defines the elements in the search bar and ability to search for items
 class SearchBarViewController: UIViewController, UISearchBarDelegate {
 
     let searchBar = UISearchBar(frame: CGRect(x: 50, y: 15, width: 300, height: 20))
@@ -15,13 +16,12 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
     let hideSearchButton = UIButton(frame: CGRect(x: 25, y: 15, width: 30, height: 20))
     let notificationButton = UIButton(frame: CGRect(x: 350, y: 15, width: 30, height: 20))
     
+    /// Sets search bar elements and defines notification observer to detect specific actions that will update the table view and search views
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchBar.delegate = self
-        
         view.backgroundColor = .yellow
-        
         searchBar.backgroundColor = .clear
         self.view.addSubview(searchBar)
         searchBar.isHidden = true
@@ -54,20 +54,29 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(makeSearchHidden), name: Notification.Name("makeSearchHidden"), object: nil)
     }
     
+    /// Notifies that things are being entered into the search bar
+    /// - Parameters:
+    ///   - searchBar: Where users can search for items
+    ///   - searchText: The information of the item to be searched
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         GlobalVariables.searchBar.append(searchText)
         NotificationCenter.default.post(name: Notification.Name("newSearchString"), object: nil)
     }
     
+    /// Hides search button when specific button (the left facing arrow) is clicked
     @objc func makeSearchHidden(){
         searchBar.isHidden = true
         hideSearchButton.isHidden = true
         companyLogo.isHidden = false
     }
-    
+    //TODO: - Can update this in the future like notify user if item is delivered or not.
     @objc func notificationButtonAction(_sender: UIButton!){
         print("notif button pressed")
     }
+    
+    
+    /// Shows the search bar and loads table view
+    /// - Parameter _sender: <#_sender description#>
     @objc func buttonAction(_sender: UIButton!){
         searchBar.isHidden = false
         searchButton.isHidden = true
@@ -76,6 +85,8 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         NotificationCenter.default.post(name: Notification.Name("showSearchContent"), object: nil)
         NotificationCenter.default.post(name: Notification.Name("reloadTableView"), object: nil)
     }
+    /// Hides the search bar
+    /// - Parameter _sender: <#_sender description#>
     @objc func hideSearchButtonAction(_sender: UIButton!){
         searchBar.text = nil
         searchBar.resignFirstResponder()

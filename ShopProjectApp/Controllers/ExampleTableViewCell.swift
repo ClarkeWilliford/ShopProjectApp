@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Main table view cell that holds item image, name, and price that is displayed in table view of home page
 class ExampleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemName: UILabel!
@@ -19,13 +20,9 @@ class ExampleTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @IBAction func itemSelected(_ sender: Any) {
         print("item selected")
-        
     }
-    
 }
