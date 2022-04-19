@@ -27,6 +27,12 @@
 		2DB24F6127FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */; };
 		2DC35DFD27FDD61900DEAFD1 /* ShopGroupAppDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */; };
 		2DC35DFF27FDE63200DEAFD1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */; };
+		2DD0DF5B280E7E9500A8F451 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 2DD0DF5A280E7E9500A8F451 /* DropDown */; };
+		2DD0DF5D280F056600A8F451 /* PaymentVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0DF5C280F056600A8F451 /* PaymentVerification.swift */; };
+		2DD0DF5F280F06AA00A8F451 /* PayWithCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0DF5E280F06AA00A8F451 /* PayWithCreditCardViewController.swift */; };
+		2DD0DF61280F06B700A8F451 /* PayWithNetBankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0DF60280F06B700A8F451 /* PayWithNetBankingViewController.swift */; };
+		2DD0DF63280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0DF62280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift */; };
+		2DD0DF67280F10CA00A8F451 /* NetBankVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0DF66280F10CA00A8F451 /* NetBankVerification.swift */; };
 		3D3783E6280DB7CB006ADA90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D3783E5280DB7CB006ADA90 /* GoogleService-Info.plist */; };
 		3D3783E8280DC1E3006ADA90 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3783E7280DC1E2006ADA90 /* SignUpViewController.swift */; };
 		4896D4943F04427BACC3566A /* Pods_ShopProjectApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C157A4DBF55160E10F9B54C /* Pods_ShopProjectApp.framework */; };
@@ -105,6 +111,11 @@
 		2DB24F5F27FCA39700F0ADA4 /* PurchasedItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasedItemTableViewCell.xib; sourceTree = "<group>"; };
 		2DC35DFC27FDD61900DEAFD1 /* ShopGroupAppDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShopGroupAppDB.db; sourceTree = "<group>"; };
 		2DC35DFE27FDE63200DEAFD1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2DD0DF5C280F056600A8F451 /* PaymentVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVerification.swift; sourceTree = "<group>"; };
+		2DD0DF5E280F06AA00A8F451 /* PayWithCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWithCreditCardViewController.swift; sourceTree = "<group>"; };
+		2DD0DF60280F06B700A8F451 /* PayWithNetBankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWithNetBankingViewController.swift; sourceTree = "<group>"; };
+		2DD0DF62280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWithCashOnDeliverViewController.swift; sourceTree = "<group>"; };
+		2DD0DF66280F10CA00A8F451 /* NetBankVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetBankVerification.swift; sourceTree = "<group>"; };
 		3D3783E5280DB7CB006ADA90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D3783E7280DC1E2006ADA90 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4C36F72C28076B1000F0C400 /* refundCellSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = refundCellSelector.swift; sourceTree = "<group>"; };
@@ -159,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4896D4943F04427BACC3566A /* Pods_ShopProjectApp.framework in Frameworks */,
+				2DD0DF5B280E7E9500A8F451 /* DropDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +238,9 @@
 				4C36F73E280CB18A00F0C400 /* HistoryViewController.swift */,
 				4C36F73C280CB17C00F0C400 /* HistoryTableViewCell.swift */,
 				3D3783E7280DC1E2006ADA90 /* SignUpViewController.swift */,
+				2DD0DF5E280F06AA00A8F451 /* PayWithCreditCardViewController.swift */,
+				2DD0DF60280F06B700A8F451 /* PayWithNetBankingViewController.swift */,
+				2DD0DF62280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -307,6 +322,8 @@
 				4CB7E7F327FCE23B00D8DAF2 /* GlobalVariables.swift */,
 				4CA585F227FDECF300BDBF63 /* User.swift */,
 				4C36F72C28076B1000F0C400 /* refundCellSelector.swift */,
+				2DD0DF5C280F056600A8F451 /* PaymentVerification.swift */,
+				2DD0DF66280F10CA00A8F451 /* NetBankVerification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +369,9 @@
 			dependencies = (
 			);
 			name = ShopProjectApp;
+			packageProductDependencies = (
+				2DD0DF5A280E7E9500A8F451 /* DropDown */,
+			);
 			productName = ShopProjectApp;
 			productReference = 4CB7E7A627FB38F000D8DAF2 /* ShopProjectApp.app */;
 			productType = "com.apple.product-type.application";
@@ -427,6 +447,9 @@
 				Base,
 			);
 			mainGroup = 4CB7E79D27FB38F000D8DAF2;
+			packageReferences = (
+				2DD0DF59280E7E9500A8F451 /* XCRemoteSwiftPackageReference "DropDown" */,
+			);
 			productRefGroup = 4CB7E7A727FB38F000D8DAF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -581,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD0DF5D280F056600A8F451 /* PaymentVerification.swift in Sources */,
 				4CA586022800A13E00BDBF63 /* profileUserOrderCollectionViewCell.swift in Sources */,
 				4C36F7332809B66900F0C400 /* TrackerViewController.swift in Sources */,
 				2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */,
@@ -611,13 +635,17 @@
 				4C36F739280C982C00F0C400 /* WishlistViewController.swift in Sources */,
 				2D7BAE9027FB852B00981E92 /* DealOfTheDayTableViewCell.swift in Sources */,
 				4CB7E7F427FCE23B00D8DAF2 /* GlobalVariables.swift in Sources */,
+				2DD0DF63280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift in Sources */,
 				4C36F72D28076B1000F0C400 /* refundCellSelector.swift in Sources */,
 				4CB7E7AC27FB38F000D8DAF2 /* SceneDelegate.swift in Sources */,
 				4CB7E7E727FC9CD100D8DAF2 /* UserOrder.swift in Sources */,
 				4CB7E7F027FCCD5E00D8DAF2 /* displayItemViewController.swift in Sources */,
 				4CB7E7F227FCCE4B00D8DAF2 /* SuggestedItemCollectionViewCell.swift in Sources */,
+				2DD0DF5F280F06AA00A8F451 /* PayWithCreditCardViewController.swift in Sources */,
 				4CA5860028009CAF00BDBF63 /* ProfileViewController.swift in Sources */,
+				2DD0DF67280F10CA00A8F451 /* NetBankVerification.swift in Sources */,
 				4C36F72F28086B0C00F0C400 /* FeedbackViewController.swift in Sources */,
+				2DD0DF61280F06B700A8F451 /* PayWithNetBankingViewController.swift in Sources */,
 				2D7BAE9427FB863F00981E92 /* CollectionTableViewCell.swift in Sources */,
 				4CA586072804C49B00BDBF63 /* RefundViewController.swift in Sources */,
 				4CA585F327FDECF300BDBF63 /* User.swift in Sources */,
@@ -964,6 +992,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2DD0DF59280E7E9500A8F451 /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DD0DF5A280E7E9500A8F451 /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DD0DF59280E7E9500A8F451 /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CB7E79E27FB38F000D8DAF2 /* Project object */;
 }
