@@ -76,7 +76,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
     
     
     /// Shows the search bar and loads table view
-    /// - Parameter _sender: <#_sender description#>
+    /// - Parameter _sender: button action
     @objc func buttonAction(_sender: UIButton!){
         searchBar.isHidden = false
         searchButton.isHidden = true
@@ -85,8 +85,9 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         NotificationCenter.default.post(name: Notification.Name("showSearchContent"), object: nil)
         NotificationCenter.default.post(name: Notification.Name("reloadTableView"), object: nil)
     }
+
     /// Hides the search bar
-    /// - Parameter _sender: <#_sender description#>
+    /// - Parameter _sender: button action
     @objc func hideSearchButtonAction(_sender: UIButton!){
         searchBar.text = nil
         searchBar.resignFirstResponder()

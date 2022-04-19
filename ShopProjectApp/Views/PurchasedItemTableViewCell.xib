@@ -48,6 +48,16 @@
                             <action selector="stepperFunction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="rds-nv-I2Q"/>
                         </connections>
                     </stepper>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nb9-MO-vcd">
+                        <rect key="frame" x="33" y="260" width="148" height="31"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system" title="Remove"/>
+                        <connections>
+                            <action selector="remove:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hRv-Gs-xGQ"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -56,9 +66,13 @@
                 <outlet property="itemName" destination="PdL-Qi-OPE" id="AXg-hT-D2h"/>
                 <outlet property="itemPrice" destination="b3E-Fu-aoB" id="I6w-V5-3ZD"/>
                 <outlet property="itemQuantity" destination="YYY-HD-Hwd" id="ZtK-V3-AHc"/>
+                <outlet property="remove" destination="nb9-MO-vcd" id="Toc-hC-i7L"/>
                 <outlet property="stepper" destination="uAZ-dm-GYk" id="MQZ-fo-ly2"/>
             </connections>
             <point key="canvasLocation" x="86.956521739130437" y="193.86160714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
+    </resources>
 </document>
