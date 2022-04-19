@@ -93,7 +93,7 @@ class PlaceOrderViewController: UIViewController {
             //setup the view controller to be presented.
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: identifier!)
             //define that we want to have the modal presentation fill the screen.
-            nextViewController.modalPresentationStyle = .fullScreen
+            nextViewController.modalPresentationStyle = .automatic
             
             //actually present the next view.
             self.present(nextViewController, animated: true, completion:nil)

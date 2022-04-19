@@ -38,7 +38,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == 0){
             var cell = tableView.dequeueReusableCell(withIdentifier: "ProceedToCheckoutTableViewCell", for: indexPath) as! ProceedToCheckoutTableViewCell
-            if total == 0.0{
+            if GlobalVariables.itemsInCart.isEmpty{
                 cell.totalPrice.text = ("No items in cart")
             } else {
                 cell.totalPrice.text = ("Total: $\(total)")
