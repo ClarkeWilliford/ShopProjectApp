@@ -7,7 +7,8 @@
 
 import UIKit
 import MapKit
-
+import Firebase
+import Messages
 class TrackerViewController: UIViewController {
     
     //Outlet Block
@@ -130,16 +131,24 @@ class TrackerViewController: UIViewController {
         }
     
     }
-    //This is the function that actually moves the plane from it's starting point to it's end point. 
+    ///This is the function that actually moves the plane from it's starting point to it's end point. Upon completion, add delivery time to notificationItems in global variables to update the notification count in the search bar
     func movePlane(_ x: CGFloat, _ y: CGFloat) {
-        
         UIView.animate(withDuration: 10.0, delay: 1.5, options: .curveLinear, animations: {
             
             self.plane.center.x = x
             self.plane.center.y = y
             
-        }, completion: nil)
-        
+        }, completion: {_ in
+            GlobalVariables.notificationItems.append("Order completed on \(Date())")
+        })
+    }
+    
+    /// Upon dismissing this view, the notification does the actual update of the notification count in the search bar
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed {
+            NotificationCenter.default.post(name: Notification.Name("updateNotificationNumber"), object: nil)
+        }
     }
 
 }

@@ -33,4 +33,6 @@ class GlobalVariables {
     
     static var searchBar = [String]()
     
+    static var notificationItems = [String]()
+    
 }
