@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         database.orderItems = [Items]()
         database.userOrderList = [UserOrder]()
         database.fetchUserOrderItems()
-        userNameOutlet.text = GlobalVariables.userLoggedIn.name
+        userNameOutlet.text = GlobalVariables.userLoggedIn.fname
         userEmailOutlet.text = GlobalVariables.userLoggedIn.email
         refundBalanceOutlet.text = GlobalVariables.userLoggedIn.balance
         
