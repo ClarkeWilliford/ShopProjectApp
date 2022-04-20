@@ -9,9 +9,9 @@ import Foundation
 
 class GlobalVariables {
     
-    static var userLoggedIn : User = User(id: 0, name: "", email: "", password: "", phone: "", balance: "")
+    static var userLoggedIn : User = User(id: 0, fname: "", lname: "", email: "", password: "", phone: "", balance: "")
     
-    static var userTryingToLogin: User = User(id: 0, name: "", email: "", password: "", phone: "", balance: "")
+    static var userTryingToLogin: User = User(id: 0, fname: "", lname: "", email: "", password: "", phone: "", balance: "")
     
     static var userHistory = [Items]()
     

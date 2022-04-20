@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUpViewController: ViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var fName: UITextField!
     @IBOutlet weak var lName: UITextField!
@@ -18,10 +18,12 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var password: UITextField!
     
+    var database = DBHelper()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        database.OpenDatabase()
         setUpElements()
         
     }
@@ -60,6 +62,10 @@ class SignUpViewController: ViewController {
                         }
                     }
                     
+                    self.database.insertUser(fname: firstName, lname: lastName, email: email, password: password, phone: phone, balance: "0")
+                    
+                    self.database.fetchUserByEmail(emailToFetch: email)
+                    
                     self.transitionToAccountPage()
                 
                   }
@@ -87,13 +93,6 @@ class SignUpViewController: ViewController {
         }
         
         let validPassword = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-// Can use this section to implement the validate email function
-//        if validatePassword(validPassword) == false {
-//
-//            return "Please enter valid password"
-//
-//        }
         
         return nil
         
