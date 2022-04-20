@@ -19,9 +19,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var password: UITextField!
     
+    var database = DBHelper()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        database.OpenDatabase()
         setUpElements()
     }
     
@@ -58,6 +61,11 @@ class SignUpViewController: UIViewController {
                         
                         }
                     }
+                    
+                    self.database.insertUser(fname: firstName, lname: lastName, email: email, password: password, phone: phone, balance: "0")
+                    
+                    self.database.fetchUserByEmail(emailToFetch: email)
+                    
                     self.transitionToAccountPage()
                 
                   }
@@ -77,13 +85,6 @@ class SignUpViewController: UIViewController {
         }
         
         let validPassword = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-// Can use this section to implement the validate email function
-//        if validatePassword(validPassword) == false {
-//
-//            return "Please enter valid password"
-//
-//        }
         
         return nil
         

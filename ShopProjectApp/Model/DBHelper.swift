@@ -176,7 +176,7 @@ class DBHelper{
             }
     }
     
-    
+    //MARK: function to fetch the suggested items from the Database by their Item ID.
     func FetchSuggestedItemByID(idToFetch: Int){
         //Holds the id to use.
         let idToUse = idToFetch
@@ -277,6 +277,75 @@ class DBHelper{
             }
             //Prints to the console.
             print("data save")
+        }
+    
+    
+    //MARK: function to add the users into the database.
+    func insertUser(fname: String, lname: String, email: String, password: String, phone: String, balance: String){
+        
+        // variables to hold the data as NString.
+        let fname = fname as NSString
+        let lname = lname as NSString
+        let email = email as NSString
+        let password = password as NSString
+        let phone = phone as NSString
+        let balance = balance as NSString
+            
+        
+            
+
+            var stmt: OpaquePointer?
+           // stores the query for the database.
+            let query = "INSERT INTO User (fname,email,password,phone,balance,lname) SELECT (?,?,?,?,?,?) WHERE NOT EXISTS (SELECT * FROM User WHERE fname = '\(fname)', email = '\(email)', password = '\(password)', phone = '\(phone)', lname = '\(lname)'"
+           
+            //Sends the query to the database.
+            if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+            //binds the fname
+        if sqlite3_bind_text(stmt, 1, fname.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //binds the email
+        if sqlite3_bind_text(stmt, 2, email.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //binds the password
+        if sqlite3_bind_text(stmt, 3, password.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //binds the phone
+        if sqlite3_bind_text(stmt, 4, phone.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //binds the balance
+        if sqlite3_bind_text(stmt, 5, balance.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //binds the lname
+        if sqlite3_bind_text(stmt, 6, lname.utf8String, -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+        
+            //Checks if the bindings succeeded.
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let err = String(cString: sqlite3_errmsg(dataBase)!)
+                print(err)
+            }
+            //Prints to the console.
+            print("user added")
         }
     
     //MARK: Function to add the users wishlist into the database.
@@ -411,14 +480,15 @@ class DBHelper{
         while(sqlite3_step(stmt) == SQLITE_ROW){
             //variables to hold the information retrieved.
             let id = sqlite3_column_int(stmt, 0)
-            let name = String(cString: sqlite3_column_text(stmt,1))
+            let fname = String(cString: sqlite3_column_text(stmt,1))
             let email = String(cString: sqlite3_column_text(stmt, 2))
             let password = String(cString: sqlite3_column_text(stmt, 3))
             let phone = String(cString: sqlite3_column_text(stmt, 4))
             let balance = String(cString: sqlite3_column_text(stmt, 5))
+            let lname = String(cString: sqlite3_column_text(stmt, 6))
             
             //Adds the user to the global variable.
-            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone, balance: balance)
+            GlobalVariables.userLoggedIn = User(id: Int(id), fname: fname, lname: lname, email: email, password: password, phone: phone, balance: balance)
             
            
         }
@@ -444,14 +514,15 @@ class DBHelper{
         while(sqlite3_step(stmt) == SQLITE_ROW){
             //variables to hold the information retrieved.
             let id = sqlite3_column_int(stmt, 0)
-            let name = String(cString: sqlite3_column_text(stmt,1))
+            let fname = String(cString: sqlite3_column_text(stmt,1))
             let email = String(cString: sqlite3_column_text(stmt, 2))
             let password = String(cString: sqlite3_column_text(stmt, 3))
             let phone = String(cString: sqlite3_column_text(stmt, 4))
             let balance = String(cString: sqlite3_column_text(stmt, 5))
+            let lname = String(cString: sqlite3_column_text(stmt, 6))
             
             //Adds the user to the global variable.
-            GlobalVariables.userTryingToLogin = User(id: Int(id), name: name, email: email, password: password, phone: phone, balance: balance)
+            GlobalVariables.userLoggedIn = User(id: Int(id), fname: fname, lname: lname, email: email, password: password, phone: phone, balance: balance)
             
         
         }

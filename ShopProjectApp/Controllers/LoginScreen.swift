@@ -157,7 +157,7 @@ struct ContentView_Previews: PreviewProvider {
     
     
     func SetGlobalVariable(){
-        GlobalVariables.userLoggedIn = User(id: GlobalVariables.userTryingToLogin.id, name: GlobalVariables.userTryingToLogin.name, email: GlobalVariables.userTryingToLogin.email, password: GlobalVariables.userTryingToLogin.password, phone: GlobalVariables.userTryingToLogin.phone,balance: GlobalVariables.userTryingToLogin.balance)
+        GlobalVariables.userLoggedIn = User(id: GlobalVariables.userTryingToLogin.id, fname: GlobalVariables.userTryingToLogin.fname, lname: GlobalVariables.userTryingToLogin.lname, email: GlobalVariables.userTryingToLogin.email, password: GlobalVariables.userTryingToLogin.password, phone: GlobalVariables.userTryingToLogin.phone,balance: GlobalVariables.userTryingToLogin.balance)
         
     }
     
