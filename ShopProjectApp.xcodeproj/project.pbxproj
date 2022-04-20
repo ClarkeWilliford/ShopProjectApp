@@ -20,6 +20,7 @@
 		2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7E7DB27FB444600D8DAF2 /* DBHelper.swift */; };
 		2D95551F2800E31C0032C719 /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95551E2800E31C0032C719 /* PlaceOrderViewController.swift */; };
 		2D9C9EFA280CF2F200261604 /* SearchContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C9EF9280CF2F200261604 /* SearchContentViewController.swift */; };
+		2DACDE7C2810535B007BCDA0 /* PackageDeliveredNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DACDE7B2810535B007BCDA0 /* PackageDeliveredNotificationViewController.swift */; };
 		2DB24F5927FC98EF00F0ADA4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB24F5827FC98EF00F0ADA4 /* CartViewController.swift */; };
 		2DB24F5C27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB24F5A27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift */; };
 		2DB24F5D27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */; };
@@ -104,6 +105,7 @@
 		2D7BAE9727FB86C800981E92 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		2D95551E2800E31C0032C719 /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
 		2D9C9EF9280CF2F200261604 /* SearchContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentViewController.swift; sourceTree = "<group>"; };
+		2DACDE7B2810535B007BCDA0 /* PackageDeliveredNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDeliveredNotificationViewController.swift; sourceTree = "<group>"; };
 		2DB24F5827FC98EF00F0ADA4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		2DB24F5A27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceedToCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		2DB24F5B27FCA0BF00F0ADA4 /* ProceedToCheckoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProceedToCheckoutTableViewCell.xib; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				2DD0DF5E280F06AA00A8F451 /* PayWithCreditCardViewController.swift */,
 				2DD0DF60280F06B700A8F451 /* PayWithNetBankingViewController.swift */,
 				2DD0DF62280F06C400A8F451 /* PayWithCashOnDeliverViewController.swift */,
+				2DACDE7B2810535B007BCDA0 /* PackageDeliveredNotificationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD0DF5D280F056600A8F451 /* PaymentVerification.swift in Sources */,
+				2DACDE7C2810535B007BCDA0 /* PackageDeliveredNotificationViewController.swift in Sources */,
 				4CA586022800A13E00BDBF63 /* profileUserOrderCollectionViewCell.swift in Sources */,
 				4C36F7332809B66900F0C400 /* TrackerViewController.swift in Sources */,
 				2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */,

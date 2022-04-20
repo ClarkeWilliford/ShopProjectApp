@@ -10,7 +10,7 @@ import FirebaseAuth
 import Firebase
 
 /// Sign up page loaded before user can perform certain actions like submitting a payment or accessing profile page
-class SignUpViewController: ViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var fName: UITextField!
     @IBOutlet weak var lName: UITextField!

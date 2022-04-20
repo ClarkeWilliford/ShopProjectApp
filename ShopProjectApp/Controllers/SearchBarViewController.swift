@@ -15,6 +15,7 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
     let companyLogo = UILabel(frame: CGRect(x: 50, y: 15, width: 100, height: 20))
     let hideSearchButton = UIButton(frame: CGRect(x: 25, y: 15, width: 30, height: 20))
     let notificationButton = UIButton(frame: CGRect(x: 350, y: 15, width: 30, height: 20))
+    let notificationNumber = UILabel(frame: CGRect(x: 372, y: 8, width: 30, height: 20))
     
     /// Sets search bar elements and defines notification observer to detect specific actions that will update the table view and search views
     override func viewDidLoad() {
@@ -40,6 +41,9 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         notificationButton.addTarget(self, action: #selector(notificationButtonAction), for: .touchUpInside)
         self.view.addSubview(notificationButton)
         
+        notificationNumber.backgroundColor = .clear
+        self.view.addSubview(notificationNumber)
+        
         //when search button clicked, add search bar
         hideSearchButton.backgroundColor = .clear
         hideSearchButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
@@ -52,6 +56,9 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         self.view.addSubview(companyLogo)
         
         NotificationCenter.default.addObserver(self, selector: #selector(makeSearchHidden), name: Notification.Name("makeSearchHidden"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationNumber), name: Notification.Name("updateNotificationNumber"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearNotificationNumber), name: Notification.Name("clearNotificationNumber"), object: nil)
+        
     }
     
     /// Notifies that things are being entered into the search bar
@@ -69,9 +76,25 @@ class SearchBarViewController: UIViewController, UISearchBarDelegate {
         hideSearchButton.isHidden = true
         companyLogo.isHidden = false
     }
-    //TODO: - Can update this in the future like notify user if item is delivered or not.
+    
+    /// Updates number of notifications to the UILabel on the search bar
+    @objc func updateNotificationNumber(){
+        notificationNumber.text = String(GlobalVariables.notificationItems.count)
+    }
+    /// Clears the notification count on the UILabel on the search bar
+    @objc func clearNotificationNumber(){
+        notificationNumber.text = nil
+    }
+    
+    /// Navigates to the notification page
+    /// - Parameter _sender: button action click
     @objc func notificationButtonAction(_sender: UIButton!){
-        print("notif button pressed")
+        //Define the bundle and the storyboard.
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Set the viewController to move to next.
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "notificationPage")
+        //Present the next view controller.
+        self.present(nextViewController, animated: true, completion:nil)
     }
     
     
