@@ -22,7 +22,7 @@ class DataFetcher{
         if pagination{
             isPaginating = true
         }
-        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2), execute: { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + (pagination ? 3 : 2), execute: { [self] in
             
             let originalIndexData = [0,1,2,3,4]
             var newIndexData = [Int]()

@@ -9,16 +9,19 @@ import SwiftUI
 import SQLite3
 import UIKit
 import FirebaseAuth
+import Firebase
+import Foundation
+import FirebaseFirestore
 
 let storedUsername = "Stan"
 let storedPassword = "asdf"
 let yellow = Color(red: 255/255, green: 239/255, blue: 93/255)
 
-
+var fbUserList = [firebaseUser]()
 
 
 struct LoginView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     
     @State var emailOrPhoneNumber: String = ""
     @State var username: String = ""
@@ -28,7 +31,11 @@ struct LoginView: View {
     @State var authenticationDidPass: Bool = false
     
     @State var database = DBHelper()
+    @State var firebase = Firestore.firestore()
     
+    @State var currentUser = firebaseUser(id: 0, fname: "", lname: "", email: "", password: "", phone: "" )
+    
+    @ObservedObject private var viewModel = firebaseUserViewModel()
     
     var body: some View {
         
@@ -49,26 +56,10 @@ struct LoginView: View {
                         .foregroundColor(.red)
                 }
                 
+                   
                 Button(action: {
                     emailOrPhoneNumber = username
                     database.OpenDatabase()
-                    if Validate.isValidEmail(email: emailOrPhoneNumber){
-                    database.fetchUserByEmail(emailToFetch: emailOrPhoneNumber)
-                    }
-                    else{
-                        database.fetchUserByPhone(phoneToFetch: emailOrPhoneNumber)
-                    }
-                    
-                    if (self.emailOrPhoneNumber == GlobalVariables.userTryingToLogin.email || self.emailOrPhoneNumber == GlobalVariables.userTryingToLogin.phone) && (self.password == GlobalVariables.userTryingToLogin.password) {
-                        self.authenticationDidPass = true
-                        self.authenticationDidFail = false
-                        SetGlobalVariable()
-                        dismiss()
-                        
-                        }else {
-                        self.authenticationDidFail = true
-                        self.authenticationDidPass = false
-                    }
                     
                     Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
                         if error != nil {
@@ -81,58 +72,29 @@ struct LoginView: View {
 //                            self.errorLabel.alpha = 1
                         } else {
                             
-                            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-                            let window = sceneDelegate!.window
-                            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "accountPage")
-                            nextViewController.modalPresentationStyle = .fullScreen
-                            window!.rootViewController = nextViewController
-                            window!.makeKeyAndVisible() }
+                            getDataFromFirestore(username)
+                            
+                            database.insertUser(fname: GlobalVariables.userLoggedIn.fname, lname: GlobalVariables.userLoggedIn.lname, email: emailOrPhoneNumber, password: password,  phone: GlobalVariables.userLoggedIn.phone, balance: "0")
+                            
+                            database.fetchUserByEmail(emailToFetch: emailOrPhoneNumber)
+                            
+                            dismiss()
+                            
+                        }
                     }
                 }) {
                 LoginButtonText()
             }
                 
                 Button(action: {
-                    
                     goToRegister()
-
-                    
-                    //                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                    //instantiates the view controller we are moving to.
-//                    let rootViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
-//                    //sets up and moves to the desired view controller.
-//                    if let window = UIApplication.shared.windows.first{
-//                        window.rootViewController = rootViewController
-//                        window.endEditing(true)
-//                        window.makeKeyAndVisible()
-//                    }
-                    
-                    //if (self.username == storedUsername) && (self.password == storedPassword) {
-//                        self.authenticationDidPass = true
-//                        self.authenticationDidFail = false
-//                    }else {
-//                        self.authenticationDidFail = true
-//                        self.authenticationDidPass = false
-//
-//                    }
-//                    guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
-//                          let window = sceneDelegate.window else { return }
-//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RegisterVC")
-//                    nextViewController.modalPresentationStyle = .fullScreen
-//
-////                    if let window = UIApplication.shared.windows.first{
-////                        window.rootViewController = nextViewController
-////                        window.endEditing(true)
-////                        window.makeKeyAndVisible()
-//                   // }
-//                    window.rootViewController = nextViewController
-//                    window.makeKeyAndVisible()
                 })
                 {
                 RegisterButtonText()
             }
+                .onAppear(){
+                    self.viewModel.fetchData()
+                }
                 
         }.padding()
             if authenticationDidPass {
@@ -248,3 +210,52 @@ struct passwordTextField: View {
             .padding(.bottom, 20)
     }
 }
+
+func getDataFromFirestore(_ uname: String) {
+    
+    let fbUsername = uname
+    
+    let db = Firestore.firestore()
+    
+    db.collection("users").getDocuments { userDocument, error in
+        if error == nil {
+            
+            if let userDocument = userDocument {
+                
+                DispatchQueue.main.async {
+                    
+                    let currentuser = Auth.auth().currentUser?.uid
+                    
+                    for user in userDocument.documents {
+                        
+                        let documentID = (user["uid"] as? String)!
+                        
+                        if currentuser ==  documentID {
+                            
+                            let currentFName = (user["firstname"] as? String)!
+                            let currentLName = (user["lastname"] as? String)!
+                            let currentEmail = (user["mail"] as? String)!
+                            let currentPhone = (user["phone"] as? String)!
+                            
+                            GlobalVariables.userLoggedIn.fname = currentFName
+                            GlobalVariables.userLoggedIn.lname = currentLName
+                            GlobalVariables.userLoggedIn.email = currentEmail
+                            GlobalVariables.userLoggedIn.phone = currentPhone
+                        
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+            
+    }
+    
+}
+
+
+
+

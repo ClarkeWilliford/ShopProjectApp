@@ -296,7 +296,7 @@ class DBHelper{
 
             var stmt: OpaquePointer?
            // stores the query for the database.
-            let query = "INSERT INTO User (fname,email,password,phone,balance,lname) SELECT (?,?,?,?,?,?) WHERE NOT EXISTS (SELECT * FROM User WHERE fname = '\(fname)', email = '\(email)', password = '\(password)', phone = '\(phone)', lname = '\(lname)'"
+            let query = "INSERT INTO User (fname,email,password,phone,balance,lname) SELECT ?,?,?,?,?,? WHERE NOT EXISTS (SELECT * FROM User WHERE  email = '\(email)' AND password = '\(password)')"
            
             //Sends the query to the database.
             if sqlite3_prepare_v2(dataBase, query, -1, &stmt, nil) != SQLITE_OK{

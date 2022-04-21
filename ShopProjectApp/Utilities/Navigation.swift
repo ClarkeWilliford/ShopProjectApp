@@ -36,13 +36,14 @@ class Navigation{
         //defines the storyboard and the bundle.
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         //instantiates the view controller we are moving to.
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
+        let registerViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC")
         //sets up and moves to the desired view controller.
         if let window = UIApplication.shared.windows.first{
-            window.rootViewController = rootViewController
+            window.rootViewController = registerViewController
             window.endEditing(true)
             window.makeKeyAndVisible()
         }
+        
     }
     
     //MARK: function to go to the item display screen.
@@ -125,5 +126,16 @@ class Navigation{
         window.makeKeyAndVisible()
     }
 
-    
+    //MARK: function to go to the home page.
+    static func goToHome(){
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let window = sceneDelegate.window else {
+            return
+        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //Sets the view to move to.
+        let historyViewController = storyboard.instantiateViewController(withIdentifier: "homePage")
+        //moves us to the view
+        window.rootViewController = historyViewController
+        window.makeKeyAndVisible()
+    }
 }
