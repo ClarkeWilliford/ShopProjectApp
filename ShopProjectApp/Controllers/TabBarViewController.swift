@@ -65,7 +65,7 @@ class TabBarViewController: UIViewController {
         //Create objects to point to the correct controllers
         let swiftUIController = UIHostingController(rootView: LoginView())
         //Checks to see if there is a user logged in, if they aren't logged in, take them to the login page, else go to Account(profile) page.
-        if GlobalVariables.userLoggedIn.name == "" {
+        if GlobalVariables.userLoggedIn.fname == "" {
             //present the Swift UI conteroller modally, not fullscreen.
             self.present(swiftUIController, animated: true, completion: nil)
         }

@@ -26,6 +26,8 @@ class FeedbackViewController: UIViewController {
         super.viewDidLoad()
        //call to open the database
         database.OpenDatabase()
+        Styles.styleTextView(feedbackTextFieldOutlet, placeHolderString: "Please write your feedback here.")
+        Styles.styleFilledButton(feedbackSubmitButtonOutlet)
        
     }
     

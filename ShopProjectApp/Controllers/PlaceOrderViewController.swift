@@ -106,7 +106,7 @@ class PlaceOrderViewController: UIViewController {
         if canPay == true{
             let swiftUIController = UIHostingController(rootView: LoginView())
             
-            if GlobalVariables.userLoggedIn.name == "" {
+            if GlobalVariables.userLoggedIn.fname == "" {
                 //present the Swift UI conteroller modally, not fullscreen.
                 self.present(swiftUIController, animated: true, completion: nil)
             }

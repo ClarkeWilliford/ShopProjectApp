@@ -45,6 +45,8 @@
 		4C36F73D280CB17C00F0C400 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F73C280CB17C00F0C400 /* HistoryTableViewCell.swift */; };
 		4C36F73F280CB18A00F0C400 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F73E280CB18A00F0C400 /* HistoryViewController.swift */; };
 		4C36F741280CD70D00F0C400 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F740280CD70D00F0C400 /* Styles.swift */; };
+		4C36F74528109C5900F0C400 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F74428109C5900F0C400 /* FirebaseUser.swift */; };
+		4C36F7472810AE4000F0C400 /* firebaseUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36F7462810AE4000F0C400 /* firebaseUserViewModel.swift */; };
 		4CA585F327FDECF300BDBF63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F227FDECF300BDBF63 /* User.swift */; };
 		4CA585F727FF417F00BDBF63 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585F627FF417F00BDBF63 /* LoginScreen.swift */; };
 		4CA585FC27FF496F00BDBF63 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA585FB27FF496F00BDBF63 /* Validation.swift */; };
@@ -127,6 +129,8 @@
 		4C36F73C280CB17C00F0C400 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		4C36F73E280CB18A00F0C400 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4C36F740280CD70D00F0C400 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		4C36F74428109C5900F0C400 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		4C36F7462810AE4000F0C400 /* firebaseUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebaseUserViewModel.swift; sourceTree = "<group>"; };
 		4CA585F227FDECF300BDBF63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CA585F627FF417F00BDBF63 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		4CA585FB27FF496F00BDBF63 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				4C36F72C28076B1000F0C400 /* refundCellSelector.swift */,
 				2DD0DF5C280F056600A8F451 /* PaymentVerification.swift */,
 				2DD0DF66280F10CA00A8F451 /* NetBankVerification.swift */,
+				4C36F74428109C5900F0C400 /* FirebaseUser.swift */,
+				4C36F7462810AE4000F0C400 /* firebaseUserViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				4C36F7332809B66900F0C400 /* TrackerViewController.swift in Sources */,
 				2D7BAE9B27FB8E4700981E92 /* DBHelper.swift in Sources */,
 				2D95551F2800E31C0032C719 /* PlaceOrderViewController.swift in Sources */,
+				4C36F74528109C5900F0C400 /* FirebaseUser.swift in Sources */,
 				4CB7E7AE27FB38F000D8DAF2 /* ViewController.swift in Sources */,
 				2DB24F5927FC98EF00F0ADA4 /* CartViewController.swift in Sources */,
 				4CA585FE27FF4B6200BDBF63 /* Navigation.swift in Sources */,
@@ -629,6 +636,7 @@
 				4C36F73D280CB17C00F0C400 /* HistoryTableViewCell.swift in Sources */,
 				4CA586092806135300BDBF63 /* RefundTableViewCell.swift in Sources */,
 				2D7BAE9A27FB880300981E92 /* DataFetcher.swift in Sources */,
+				4C36F7472810AE4000F0C400 /* firebaseUserViewModel.swift in Sources */,
 				4C36F73B280C9F7E00F0C400 /* WishlistTableViewCell.swift in Sources */,
 				3D3783E8280DC1E3006ADA90 /* SignUpViewController.swift in Sources */,
 				4CB7E7AA27FB38F000D8DAF2 /* AppDelegate.swift in Sources */,
